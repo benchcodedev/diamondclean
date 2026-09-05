@@ -1,0 +1,11 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 120" fill="none">
+  <!-- Halal Indonesia Official Gunungan/Dome Silhouette -->
+  <path d="M50 8 C46 20 40 28 32 38 C24 48 18 60 18 76 C18 95 32 108 50 108 C68 108 82 95 82 76 C82 60 76 48 68 38 C60 28 54 20 50 8 Z" stroke="#6B21A8" stroke-width="4.5" fill="none" stroke-linejoin="round"/>
+  <!-- Stylized Arabic Calligraphy Lines for Halal -->
+  <path d="M42 42 C42 56 42 70 42 88" stroke="#6B21A8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M50 32 C50 50 50 68 50 88" stroke="#6B21A8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M58 46 C58 60 58 74 58 88" stroke="#6B21A8" stroke-width="4" stroke-linecap="round"/>
+  <path d="M34 88 Q50 94 66 88" stroke="#6B21A8" stroke-width="4" fill="none" stroke-linecap="round"/>
+  <!-- Text Label -->
+  <text x="50" y="116" font-family="'Inter', sans-serif" font-size="8" font-weight="800" fill="#6B21A8" text-anchor="middle" letter-spacing="1">HALAL INDONESIA</text>
+</svg>

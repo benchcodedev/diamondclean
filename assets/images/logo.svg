@@ -1,0 +1,30 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+  <defs>
+    <linearGradient id="diamondGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#38BDF8"/>
+      <stop offset="50%" stop-color="#0284C7"/>
+      <stop offset="100%" stop-color="#0B6E4F"/>
+    </linearGradient>
+    <linearGradient id="sparkleGrad" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFFFFF"/>
+      <stop offset="100%" stop-color="#7DD3FC"/>
+    </linearGradient>
+  </defs>
+  <!-- Diamond Icon Group -->
+  <g transform="translate(4, 6)">
+    <polygon points="26,2 48,18 26,50 4,18" fill="url(#diamondGrad)" filter="drop-shadow(0 4px 6px rgba(2,132,199,0.3))"/>
+    <polygon points="26,2 48,18 36,18 26,2" fill="#7DD3FC" opacity="0.8"/>
+    <polygon points="26,2 4,18 16,18 26,2" fill="#BAE6FD" opacity="0.9"/>
+    <polygon points="16,18 36,18 26,50" fill="#0284C7" opacity="0.95"/>
+    <polygon points="4,18 16,18 26,50" fill="#0369A1" opacity="0.85"/>
+    <polygon points="48,18 36,18 26,50" fill="#075985" opacity="0.85"/>
+    <polygon points="16,18 26,2 36,18" fill="#E0F2FE"/>
+    <path d="M42,6 L44,12 L50,14 L44,16 L42,22 L40,16 L34,14 L40,12 Z" fill="url(#sparkleGrad)"/>
+    <circle cx="10" cy="12" r="1.5" fill="#FFFFFF"/>
+    <circle cx="44" cy="40" r="1.2" fill="#7DD3FC"/>
+  </g>
+  <!-- Brand Text -->
+  <text x="68" y="34" font-family="'Poppins', 'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="800" fill="#0A3E70" letter-spacing="-0.5">DIAMOND</text>
+  <text x="194" y="34" font-family="'Poppins', 'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="800" fill="#0B6E4F" letter-spacing="-0.5">CLEAN</text>
+  <text x="70" y="48" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#0284C7" letter-spacing="2.8">SOLUSI KEBERSIHAN INDUSTRI 5L</text>
+</svg>

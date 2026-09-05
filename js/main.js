@@ -1,0 +1,423 @@
+/* ==========================================================================
+   DIAMOND CLEAN - Main Interactive Controller (main.js)
+   Bumigas Architecture Adaptation with Smooth Physics & Mobile Transitions
+   ========================================================================== */
+
+document.addEventListener('DOMContentLoaded', () => {
+  initStickyHeader();
+  initMobileMenu();
+  initScrollAnimations();
+  initStatsCounters();
+  initAccordions();
+  initVideoPlayer();
+  initWhatsAppForms();
+  initBackToTop();
+  initSmoothAnchorScroll();
+});
+
+/* --------------------------------------------------------------------------
+   1. STICKY HEADER & SCROLL TRANSFORMATIONS
+   -------------------------------------------------------------------------- */
+function initStickyHeader() {
+  const header = document.querySelector('.header');
+  if (!header) return;
+
+  let ticking = false;
+
+  const onScroll = () => {
+    if (!ticking) {
+      window.requestAnimationFrame(() => {
+        if (window.scrollY > 40) {
+          header.classList.add('scrolled');
+          header.classList.remove('transparent-theme');
+        } else {
+          // If the page has a transparent hero, revert to transparent
+          if (document.body.classList.contains('has-transparent-hero')) {
+            header.classList.remove('scrolled');
+            header.classList.add('transparent-theme');
+          }
+        }
+        ticking = false;
+      });
+      ticking = true;
+    }
+  };
+
+  onScroll(); // Initial check
+  window.addEventListener('scroll', onScroll, { passive: true });
+}
+
+/* --------------------------------------------------------------------------
+   2. SILKY SMOOTH MOBILE MENU DRAWER
+   -------------------------------------------------------------------------- */
+function initMobileMenu() {
+  const burgerMenu = document.querySelector('.burger-menu');
+  const navMenu = document.querySelector('.nav-menu');
+  
+  if (!burgerMenu || !navMenu) return;
+
+  // Create or retrieve backdrop element
+  let backdrop = document.querySelector('.mobile-menu-backdrop');
+  if (!backdrop) {
+    backdrop = document.createElement('div');
+    backdrop.className = 'mobile-menu-backdrop';
+    document.body.appendChild(backdrop);
+  }
+
+  const toggleMenu = (forceClose = false) => {
+    const shouldOpen = forceClose ? false : !navMenu.classList.contains('active');
+    
+    if (shouldOpen) {
+      burgerMenu.classList.add('open');
+      navMenu.classList.add('active');
+      backdrop.classList.add('active');
+      document.body.style.overflow = 'hidden'; // Lock scroll cleanly
+    } else {
+      burgerMenu.classList.remove('open');
+      navMenu.classList.remove('active');
+      backdrop.classList.remove('active');
+      document.body.style.overflow = '';
+    }
+  };
+
+  burgerMenu.addEventListener('click', (e) => {
+    e.stopPropagation();
+    toggleMenu();
+  });
+
+  backdrop.addEventListener('click', () => toggleMenu(true));
+
+  // Close when tapping any link inside the mobile drawer
+  const navLinks = navMenu.querySelectorAll('.nav-link, .btn');
+  navLinks.forEach(link => {
+    link.addEventListener('click', () => {
+      toggleMenu(true);
+    });
+  });
+
+  // Close on Escape key
+  document.addEventListener('keydown', (e) => {
+    if (e.key === 'Escape' && navMenu.classList.contains('active')) {
+      toggleMenu(true);
+    }
+  });
+}
+
+/* --------------------------------------------------------------------------
+   3. HARDWARE-ACCELERATED SCROLL REVEAL ANIMATIONS
+   -------------------------------------------------------------------------- */
+function initScrollAnimations() {
+  const reveals = document.querySelectorAll('.reveal, .reveal-left, .reveal-right, .reveal-scale');
+  if (reveals.length === 0) return;
+
+  const revealObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add('active');
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.12,
+    rootMargin: '0px 0px -40px 0px'
+  });
+
+  reveals.forEach(element => {
+    revealObserver.observe(element);
+  });
+}
+
+/* --------------------------------------------------------------------------
+   4. STATISTICAL NUMBER COUNTER ANIMATION (500+, 7, 100%, 35%)
+   -------------------------------------------------------------------------- */
+function initStatsCounters() {
+  const counters = document.querySelectorAll('.counter-value');
+  if (counters.length === 0) return;
+
+  const countUp = (counter) => {
+    const target = parseFloat(counter.getAttribute('data-target'));
+    const suffix = counter.getAttribute('data-suffix') || '';
+    const speed = parseInt(counter.getAttribute('data-speed')) || 1800;
+    const stepTime = 25;
+    
+    let current = 0;
+    const increment = target / (speed / stepTime);
+    
+    const timer = setInterval(() => {
+      current += increment;
+      if (current >= target) {
+        current = target;
+        clearInterval(timer);
+      }
+      
+      if (Number.isInteger(target)) {
+        counter.textContent = Math.floor(current) + suffix;
+      } else {
+        counter.textContent = current.toFixed(1) + suffix;
+      }
+    }, stepTime);
+  };
+
+  const statsObserver = new IntersectionObserver((entries, observer) => {
+    entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        countUp(entry.target);
+        observer.unobserve(entry.target);
+      }
+    });
+  }, {
+    threshold: 0.4
+  });
+
+  counters.forEach(counter => {
+    statsObserver.observe(counter);
+  });
+}
+
+/* --------------------------------------------------------------------------
+   5. SILKY SMOOTH ACCORDION FAQ LOGIC (CSS Grid 60FPS)
+   -------------------------------------------------------------------------- */
+function initAccordions() {
+  const accordionHeaders = document.querySelectorAll('.accordion-header');
+  if (accordionHeaders.length === 0) return;
+
+  accordionHeaders.forEach(header => {
+    header.addEventListener('click', () => {
+      const item = header.parentElement;
+      const isActive = item.classList.contains('active');
+      
+      // Close other accordions in the same container
+      const container = item.closest('.accordion');
+      if (container) {
+        container.querySelectorAll('.accordion-item').forEach(other => {
+          if (other !== item) other.classList.remove('active');
+        });
+      }
+      
+      // Toggle current
+      if (isActive) {
+        item.classList.remove('active');
+      } else {
+        item.classList.add('active');
+      }
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   6. VIDEO SHOWCASE PLAYER CONTROLLER (PREMIER FEATURE ON HOME)
+   -------------------------------------------------------------------------- */
+function initVideoPlayer() {
+  const videoElement = document.getElementById('company-video');
+  const playTrigger = document.getElementById('video-play-btn');
+  const overlayDetails = document.getElementById('video-overlay');
+  const customControls = document.getElementById('video-custom-controls');
+  const playPauseBtn = document.getElementById('ctrl-play-pause');
+  const muteBtn = document.getElementById('ctrl-mute');
+  const tabButtons = document.querySelectorAll('.video-tab-btn');
+  const videoTitle = document.getElementById('video-display-title');
+  const videoDesc = document.getElementById('video-display-desc');
+  const videoBadge = document.getElementById('video-display-badge');
+
+  if (!videoElement) return;
+
+  // Video topic metadata
+  const videoTopics = {
+    'profile': {
+      title: 'Diamond Clean — Profil Pasokan Chemical & Kemasan 5L Industri',
+      desc: 'Saksikan komitmen kami dalam menghadirkan formulasi konsentrat pembersih berdaya bersih tinggi dengan kemasan jerigen 5 Liter hemat biaya bagi mitra usaha.',
+      badge: 'PRODUKSI & SUPLAI JERIGEN 5L',
+      src: 'assets/videos/demo-video.mp4'
+    },
+    'testing': {
+      title: 'Uji Kinerja Formulasi: Busa Melimpah & Daya Angkat Minyak Seketika',
+      desc: 'Demonstrasi daya angkat lemak pada sabun cuci piring dan performa busa salju shampo mobil yang efektif namun tetap aman dengan pH balance seimbang.',
+      badge: 'UJI LABORATORIUM & KINERJA',
+      src: 'assets/videos/demo-video.mp4'
+    },
+    'halal': {
+      title: 'Standar Mutu Higienis & Kepatuhan Sertifikasi Halal Indonesia',
+      desc: 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan najis dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
+      badge: '100% HALAL INDONESIA',
+      src: 'assets/videos/demo-video.mp4'
+    }
+  };
+
+  const togglePlay = () => {
+    if (videoElement.paused) {
+      videoElement.play().then(() => {
+        if (overlayDetails) overlayDetails.classList.add('playing');
+        if (playTrigger) playTrigger.style.display = 'none';
+        if (playPauseBtn) playPauseBtn.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+          </svg>
+        `;
+      }).catch(err => {
+        console.log('Video playback error:', err);
+      });
+    } else {
+      videoElement.pause();
+      if (overlayDetails) overlayDetails.classList.remove('playing');
+      if (playTrigger) playTrigger.style.display = 'flex';
+      if (playPauseBtn) playPauseBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M8 5v14l11-7z"/>
+        </svg>
+      `;
+    }
+  };
+
+  if (playTrigger) {
+    playTrigger.addEventListener('click', togglePlay);
+  }
+
+  if (videoElement) {
+    videoElement.addEventListener('click', togglePlay);
+    videoElement.addEventListener('ended', () => {
+      if (overlayDetails) overlayDetails.classList.remove('playing');
+      if (playTrigger) playTrigger.style.display = 'flex';
+    });
+  }
+
+  if (playPauseBtn) {
+    playPauseBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      togglePlay();
+    });
+  }
+
+  if (muteBtn) {
+    muteBtn.addEventListener('click', (e) => {
+      e.stopPropagation();
+      videoElement.muted = !videoElement.muted;
+      if (videoElement.muted) {
+        muteBtn.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M16.5 12c0-1.77-1.02-3.29-2.5-4.03v2.21l2.45 2.45c.03-.2.05-.41.05-.63zm2.5 0c0 .94-.2 1.82-.54 2.64l1.51 1.51C20.63 14.91 21 13.5 21 12c0-4.28-2.99-7.86-7-8.77v2.06c2.89.86 5 3.54 5 6.71zM4.27 3L3 4.27 7.73 9H3v6h4l5 5v-6.73l4.25 4.25c-.67.52-1.42.93-2.25 1.18v2.06c1.38-.31 2.63-.95 3.69-1.81L19.73 21 21 19.73l-9-9L4.27 3zM12 4L9.91 6.09 12 8.18V4z"/>
+          </svg>
+        `;
+      } else {
+        muteBtn.innerHTML = `
+          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+            <path d="M3 9v6h4l5 5V4L7 9H3zm13.5 3c0-1.77-1.02-3.29-2.5-4.03v8.05c1.48-.73 2.5-2.25 2.5-4.02zM14 3.23v2.06c2.89.86 5 3.54 5 6.71s-2.11 5.85-5 6.71v2.06c4.01-.91 7-4.49 7-8.77s-2.99-7.86-7-8.77z"/>
+          </svg>
+        `;
+      }
+    });
+  }
+
+  // Topic Switcher Tabs
+  tabButtons.forEach(btn => {
+    btn.addEventListener('click', () => {
+      tabButtons.forEach(b => b.classList.remove('active'));
+      btn.classList.add('active');
+
+      const topicKey = btn.getAttribute('data-topic');
+      const topicData = videoTopics[topicKey];
+      if (topicData) {
+        if (videoTitle) videoTitle.textContent = topicData.title;
+        if (videoDesc) videoDesc.textContent = topicData.desc;
+        if (videoBadge) videoBadge.textContent = topicData.badge;
+        
+        // Reset playback cleanly
+        videoElement.pause();
+        if (overlayDetails) overlayDetails.classList.remove('playing');
+        if (playTrigger) playTrigger.style.display = 'flex';
+      }
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   7. INTERACTIVE WHATSAPP QUOTATION GENERATOR
+   -------------------------------------------------------------------------- */
+function initWhatsAppForms() {
+  const quoteForm = document.getElementById('b2b-quote-form');
+  if (!quoteForm) return;
+
+  quoteForm.addEventListener('submit', (e) => {
+    e.preventDefault();
+
+    const name = document.getElementById('form-name')?.value.trim() || 'Mitra Usaha';
+    const company = document.getElementById('form-company')?.value.trim() || '-';
+    const sector = document.getElementById('form-sector')?.value || 'Umum';
+    const product = document.getElementById('form-product')?.value || 'Ragam Sabun 5L';
+    const volume = document.getElementById('form-volume')?.value || 'Konsultasi Kebutuhan';
+    const notes = document.getElementById('form-notes')?.value.trim() || 'Mohon info harga grosir dan ketersediaan sampel.';
+
+    const message = 
+`*PERMINTAAN PENAWARAN & SAMPEL — DIAMOND CLEAN*
+------------------------------------------------
+👤 *Nama:* ${name}
+🏢 *Perusahaan / Usaha:* ${company}
+🏷️ *Sektor Usaha:* ${sector}
+🧴 *Kebutuhan Produk:* ${product}
+📦 *Estimasi Kebutuhan:* ${volume}
+💬 *Catatan:* ${notes}
+------------------------------------------------
+_Terkirim otomatis melalui Website Resmi Diamond Clean_`;
+
+    const encodedMsg = encodeURIComponent(message);
+    const waUrl = `https://wa.me/62882007907237?text=${encodedMsg}`;
+
+    window.open(waUrl, '_blank', 'noopener,noreferrer');
+  });
+}
+
+/* --------------------------------------------------------------------------
+   8. BACK TO TOP BUTTON
+   -------------------------------------------------------------------------- */
+function initBackToTop() {
+  let backBtn = document.querySelector('.back-to-top');
+  if (!backBtn) {
+    backBtn = document.createElement('button');
+    backBtn.className = 'back-to-top';
+    backBtn.setAttribute('aria-label', 'Kembali ke atas');
+    backBtn.innerHTML = `
+      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
+        <polyline points="18 15 12 9 6 15"></polyline>
+      </svg>
+    `;
+    document.body.appendChild(backBtn);
+  }
+
+  window.addEventListener('scroll', () => {
+    if (window.scrollY > 400) {
+      backBtn.classList.add('visible');
+    } else {
+      backBtn.classList.remove('visible');
+    }
+  }, { passive: true });
+
+  backBtn.addEventListener('click', () => {
+    window.scrollTo({
+      top: 0,
+      behavior: 'smooth'
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   9. SMOOTH ANCHOR LINK SCROLL WITH HEADER OFFSET CALCULATION
+   -------------------------------------------------------------------------- */
+function initSmoothAnchorScroll() {
+  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+      const targetId = this.getAttribute('href');
+      if (targetId === '#' || targetId === '') return;
+      
+      const targetEl = document.querySelector(targetId);
+      if (targetEl) {
+        e.preventDefault();
+        const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
+        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+        
+        window.scrollTo({
+          top: targetPos,
+          behavior: 'smooth'
+        });
+      }
+    });
+  });
+}
