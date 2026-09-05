@@ -1,23 +1,23 @@
 /* ==========================================================================
    DIAMOND CLEAN - Page-Specific Layout Styles (pages.css)
-   Bumigas Enterprise Layout Adaptation for Diamond Clean Soap Supplier
+   Pure Green & White Aesthetic (Translucent Green Hero - Zero Blue)
    ========================================================================== */
 
 /* --------------------------------------------------------------------------
-   1. HERO SECTION (index.html)
+   1. HERO SECTION (index.html) - Translucent Green & Centered Clean Layout
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 100vh;
+  min-height: 88vh;
   display: flex;
   align-items: center;
   color: #FFFFFF;
-  padding: 8.5rem 0 5.5rem 0;
+  padding: 8.5rem 0 6rem 0;
   overflow: hidden;
-  background-color: var(--color-secondary);
+  background-color: var(--color-secondary-dark);
 }
 
-/* Background visual with rich sparkling clean overlay */
+/* Background image */
 .hero-bg {
   position: absolute;
   top: 0;
@@ -27,27 +27,20 @@
   object-fit: cover;
   object-position: center center;
   z-index: 1;
-  filter: brightness(0.65) saturate(1.2);
+  filter: brightness(0.85) saturate(1.1);
 }
 
+/* Clean Translucent Green Overlay (Hijau Tembus Pandang) */
 .hero-overlay {
   position: absolute;
   top: 0;
   left: 0;
   width: 100%;
   height: 100%;
-  background: linear-gradient(135deg, rgba(10, 62, 112, 0.92) 0%, rgba(11, 110, 79, 0.82) 65%, rgba(6, 78, 59, 0.88) 100%);
+  background: linear-gradient(135deg, rgba(6, 78, 59, 0.82) 0%, rgba(11, 110, 79, 0.72) 45%, rgba(22, 163, 74, 0.76) 100%);
+  backdrop-filter: blur(3px);
+  -webkit-backdrop-filter: blur(3px);
   z-index: 2;
-}
-
-/* Subtle glowing particle effect */
-.hero-overlay::after {
-  content: '';
-  position: absolute;
-  inset: 0;
-  background: radial-gradient(circle at 80% 20%, rgba(2, 132, 199, 0.3) 0%, transparent 60%),
-              radial-gradient(circle at 20% 80%, rgba(122, 193, 67, 0.25) 0%, transparent 50%);
-  pointer-events: none;
 }
 
 .hero .container {
@@ -55,84 +48,44 @@
   z-index: 3;
 }
 
-.hero-grid {
-  display: grid;
-  grid-template-columns: 1.25fr 0.75fr;
-  gap: 3.5rem;
+/* Centered & Focused Hero Layout (Cards Removed by User Request) */
+.hero-center-layout {
+  max-width: 900px;
+  margin: 0 auto;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
   align-items: center;
 }
 
 .hero-content h1 {
   color: #FFFFFF;
-  font-size: 3.25rem;
+  font-size: 3.5rem;
   font-weight: 800;
-  line-height: 1.15;
-  margin-bottom: 1.25rem;
-  text-shadow: 0 2px 12px rgba(0, 0, 0, 0.2);
+  line-height: 1.18;
+  margin-bottom: 1.5rem;
+  text-shadow: 0 2px 14px rgba(4, 54, 39, 0.4);
 }
 
 .hero-content h1 span {
   color: var(--color-accent);
-  display: block;
+  display: inline-block;
 }
 
 .hero-content .subtitle {
-  font-size: 1.125rem;
-  color: rgba(255, 255, 255, 0.92);
-  margin-bottom: 2.25rem;
-  line-height: 1.7;
-  max-width: 620px;
+  font-size: 1.2rem;
+  color: rgba(255, 255, 255, 0.95);
+  margin-bottom: 2.5rem;
+  line-height: 1.75;
+  max-width: 780px;
+  text-shadow: 0 1px 6px rgba(4, 54, 39, 0.3);
 }
 
 .hero-buttons {
   display: flex;
   flex-wrap: wrap;
-  gap: 1.1rem;
-}
-
-/* Floating Statistics Sidebar Cards */
-.hero-stats {
-  display: flex;
-  flex-direction: column;
-  gap: 1.25rem;
-}
-
-.stat-card {
-  padding: 1.35rem 1.6rem;
-  border-radius: var(--radius-lg);
-  display: flex;
-  align-items: center;
-  gap: 1.25rem;
-  transition: var(--transition-normal);
-}
-
-.stat-icon {
-  width: 52px;
-  height: 52px;
-  min-width: 52px;
-  background-color: rgba(255, 255, 255, 0.15);
-  border: 1px solid rgba(255, 255, 255, 0.25);
-  color: var(--color-accent);
-  border-radius: var(--radius-md);
-  display: flex;
-  align-items: center;
   justify-content: center;
-  font-size: 1.5rem;
-}
-
-.stat-number {
-  font-size: 2.25rem;
-  font-weight: 800;
-  font-family: var(--font-headings);
-  line-height: 1.05;
-  color: #FFFFFF;
-}
-
-.stat-label {
-  font-size: 0.9rem;
-  color: rgba(255, 255, 255, 0.85);
-  font-weight: 500;
-  margin-top: 0.2rem;
+  gap: 1.25rem;
 }
 
 /* --------------------------------------------------------------------------
@@ -199,8 +152,8 @@
 }
 
 .comparison-col.highlight {
-  background: linear-gradient(135deg, rgba(11, 110, 79, 0.05) 0%, rgba(2, 132, 199, 0.08) 100%);
-  border-left: 2px solid var(--color-primary);
+  background: linear-gradient(135deg, rgba(11, 110, 79, 0.05) 0%, rgba(122, 193, 67, 0.08) 100%);
+  border-left: 3px solid var(--color-primary);
 }
 
 .comparison-list {
@@ -224,7 +177,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   4. 7 CORE PRODUCTS GRID (Flyer Products Showcase)
+   4. 7 CORE PRODUCTS GRID
    -------------------------------------------------------------------------- */
 .product-grid {
   display: grid;
@@ -314,7 +267,7 @@
   left: 10%;
   right: 10%;
   height: 3px;
-  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-cyan));
+  background: linear-gradient(90deg, var(--color-primary), var(--color-accent), var(--color-primary-light));
   z-index: 1;
 }
 
@@ -363,7 +316,7 @@
 }
 
 /* --------------------------------------------------------------------------
-   6. TARGET INDUSTRIES GRID (Hotel, Resto, Cafe, Laundry, Car Wash)
+   6. TARGET INDUSTRIES GRID
    -------------------------------------------------------------------------- */
 .industry-grid {
   display: grid;
@@ -386,7 +339,7 @@
   display: inline-block;
   font-size: 0.75rem;
   font-weight: 700;
-  color: var(--color-cyan);
+  color: var(--color-primary);
   text-transform: uppercase;
   letter-spacing: 0.05em;
   margin-bottom: 0.75rem;
@@ -425,7 +378,7 @@
    7. QUALITY & HALAL STANDARDS SECTION
    -------------------------------------------------------------------------- */
 .halal-section-card {
-  background: linear-gradient(135deg, var(--color-secondary-dark) 0%, var(--color-primary-dark) 100%);
+  background: linear-gradient(135deg, #053B2A 0%, var(--color-secondary) 50%, var(--color-primary) 100%);
   border-radius: var(--radius-xl);
   padding: 4rem;
   color: #FFFFFF;
@@ -441,13 +394,13 @@
 }
 
 .halal-section-card p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
 }
 
 .halal-badge-display {
-  background: rgba(255, 255, 255, 0.1);
+  background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
-  border: 1px solid rgba(255, 255, 255, 0.25);
+  border: 1px solid rgba(255, 255, 255, 0.28);
   border-radius: var(--radius-lg);
   padding: 2.5rem;
   text-align: center;
@@ -512,10 +465,10 @@
 }
 
 /* --------------------------------------------------------------------------
-   9. FOOTER
+   9. FOOTER (Deep Forest Green & Crisp White)
    -------------------------------------------------------------------------- */
 .footer {
-  background-color: var(--color-secondary-dark);
+  background-color: #042F22;
   color: #FFFFFF;
   padding: 5rem 0 2rem 0;
 }
@@ -525,7 +478,7 @@
   grid-template-columns: 1.5fr 1fr 1fr 1.2fr;
   gap: 3rem;
   padding-bottom: 3.5rem;
-  border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.14);
 }
 
 .footer-col h4 {
@@ -555,7 +508,7 @@
 }
 
 .footer-links a {
-  color: rgba(255, 255, 255, 0.75);
+  color: rgba(255, 255, 255, 0.78);
   font-size: 0.925rem;
   transition: var(--transition-fast);
 }
@@ -571,7 +524,7 @@
   justify-content: space-between;
   align-items: center;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.6);
+  color: rgba(255, 255, 255, 0.65);
 }
 
 /* --------------------------------------------------------------------------
@@ -579,7 +532,7 @@
    -------------------------------------------------------------------------- */
 .page-hero-banner {
   position: relative;
-  min-height: 480px;
+  min-height: 440px;
   padding-top: 9rem;
   padding-bottom: 4.5rem;
   display: flex;
@@ -594,7 +547,7 @@
   right: 0;
   top: 0;
   height: 100%;
-  width: 50%;
+  width: 52%;
   background-size: cover;
   background-position: center;
   opacity: 0.35;
@@ -607,7 +560,7 @@
 .page-hero-content {
   position: relative;
   z-index: 3;
-  max-width: 680px;
+  max-width: 700px;
 }
 
 .page-hero-content h1 {
@@ -617,7 +570,7 @@
 }
 
 .page-hero-content p {
-  color: rgba(255, 255, 255, 0.9);
+  color: rgba(255, 255, 255, 0.92);
   font-size: 1.15rem;
   line-height: 1.7;
 }
@@ -627,7 +580,7 @@
   align-items: center;
   gap: 0.5rem;
   font-size: 0.875rem;
-  color: rgba(255, 255, 255, 0.7);
+  color: rgba(255, 255, 255, 0.75);
   margin-bottom: 1.25rem;
 }
 
@@ -636,13 +589,9 @@
 }
 
 /* --------------------------------------------------------------------------
-   RESPONSIVE BREAKPOINTS (Mobile Optimization & Smooth Physics)
+   RESPONSIVE BREAKPOINTS
    -------------------------------------------------------------------------- */
 @media (max-width: 1024px) {
-  .hero-grid {
-    grid-template-columns: 1fr;
-    gap: 3rem;
-  }
   .feature-grid {
     grid-template-columns: repeat(2, 1fr);
   }
@@ -678,6 +627,9 @@
   }
   .hero-content h1 {
     font-size: 2.35rem;
+  }
+  .hero-content .subtitle {
+    font-size: 1.05rem;
   }
   .feature-grid {
     grid-template-columns: 1fr;

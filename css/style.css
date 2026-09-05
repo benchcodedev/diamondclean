@@ -1,51 +1,48 @@
 /* ==========================================================================
    DIAMOND CLEAN - Enterprise Design System (style.css)
-   Bumigas Architecture Adaptation for Industrial Soap & Hygiene Supply
+   Pure Green & White Aesthetic (Bumigas Architecture - Zero Blue)
    ========================================================================== */
 
 @import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
 
 :root {
-  /* Brand Color Palette - Fresh, Sparkling, Hygienic & Corporate Trust */
+  /* Brand Color Palette - Pure Emerald Green & Crisp White (No Blue) */
   --color-primary: #0B6E4F;         /* Deep Emerald Clean */
-  --color-primary-dark: #08553D;    /* Deep Forest Forest */
-  --color-primary-light: #0E8560;   /* Bright Emerald */
-  --color-secondary: #0A3E70;       /* Marine Sapphire Trust */
-  --color-secondary-dark: #072B4F;  /* Deep Navy */
+  --color-primary-dark: #064E3B;    /* Deep Forest Green */
+  --color-primary-light: #10B981;   /* Vibrant Emerald Green */
+  --color-secondary: #08553D;       /* Rich Deep Pine Green */
+  --color-secondary-dark: #043627;  /* Dark Forest Slate */
   --color-accent: #7AC143;          /* Vibrant Fresh Lime Green */
-  --color-accent-hover: #69a738;    /* Darker Lime */
-  --color-cyan: #0284C7;            /* Sparkling Diamond Cyan */
-  --color-cyan-light: #E0F2FE;      /* Light Cyan Ice */
+  --color-accent-hover: #68A538;    /* Darker Fresh Lime */
   --color-light-mint: #EAF7F0;      /* Fresh Mint Light */
-  --color-mint-border: #D1EEDB;     /* Soft Mint Border */
-  --color-halal-purple: #6B21A8;    /* Official Halal Indonesia Purple */
+  --color-mint-border: #BBF7D0;     /* Soft Mint Border */
+  --color-halal-green: #047857;     /* Halal Badge Emerald */
   
-  --color-bg: #FFFFFF;
-  --color-bg-light: #F8FAFC;
-  --color-bg-mint: #F0FDF9;
-  --color-dark-text: #1B2B41;
-  --color-body-text: #475569;
-  --color-muted-text: #64748B;
-  --color-border: #E2E8F0;
-  --color-success: #10B981;
+  --color-bg: #FFFFFF;              /* Pure Crisp White */
+  --color-bg-light: #F8FAF9;        /* Soft Clean Off-White */
+  --color-bg-mint: #F0FDF4;         /* Clean Pale Mint Tint */
+  --color-dark-text: #111827;       /* Dark Charcoal */
+  --color-body-text: #374151;       /* Neutral Slate */
+  --color-muted-text: #6B7280;      /* Muted Slate */
+  --color-border: #E5E7EB;          /* Light Clean Gray Border */
+  --color-success: #16A34A;         /* Rich Leaf Green */
   
-  /* RGB values for overlays & glassmorphism */
+  /* RGB values for translucent green overlays & glassmorphism */
   --color-primary-rgb: 11, 110, 79;
-  --color-secondary-rgb: 10, 62, 112;
+  --color-secondary-rgb: 8, 85, 61;
   --color-accent-rgb: 122, 193, 67;
-  --color-cyan-rgb: 2, 132, 199;
-  --color-dark-text-rgb: 27, 43, 65;
+  --color-dark-text-rgb: 17, 24, 39;
   
   /* Typography */
   --font-headings: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
   
-  /* Elevation Shadows */
-  --shadow-sm: 0 2px 8px rgba(10, 62, 112, 0.04);
-  --shadow-md: 0 8px 24px rgba(10, 62, 112, 0.08);
-  --shadow-lg: 0 16px 48px rgba(10, 62, 112, 0.12);
+  /* Elevation Shadows (Soft green/dark tinted) */
+  --shadow-sm: 0 2px 8px rgba(11, 110, 79, 0.05);
+  --shadow-md: 0 8px 24px rgba(11, 110, 79, 0.08);
+  --shadow-lg: 0 16px 48px rgba(11, 110, 79, 0.12);
   --shadow-glow: 0 0 25px rgba(122, 193, 67, 0.35);
-  --shadow-glass: 0 8px 32px 0 rgba(10, 62, 112, 0.12);
+  --shadow-glass: 0 8px 32px 0 rgba(8, 85, 61, 0.15);
   
   /* Radii */
   --radius-sm: 6px;
@@ -70,7 +67,7 @@
 
 html {
   scroll-behavior: smooth;
-  scroll-padding-top: 5.5rem; /* Prevents sticky header from obscuring section anchors */
+  scroll-padding-top: 5.5rem;
   font-size: 16px;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
@@ -85,7 +82,7 @@ body {
   position: relative;
 }
 
-/* Headings */
+/* Headings in Deep Forest Green */
 h1, h2, h3, h4, h5, h6 {
   font-family: var(--font-headings);
   font-weight: 700;
@@ -94,7 +91,7 @@ h1, h2, h3, h4, h5, h6 {
 }
 
 h1 {
-  font-size: 3rem;
+  font-size: 3.25rem;
   letter-spacing: -0.025em;
 }
 
@@ -212,7 +209,7 @@ img, video {
 }
 
 .bg-dark {
-  background-color: var(--color-secondary);
+  background-color: var(--color-secondary-dark);
   color: #FFFFFF;
 }
 
@@ -221,7 +218,7 @@ img, video {
 }
 
 .bg-dark p {
-  color: rgba(255, 255, 255, 0.85);
+  color: rgba(255, 255, 255, 0.88);
 }
 
 /* Smooth Hardware-Accelerated Reveal Animations */
@@ -262,7 +259,6 @@ select:focus-visible {
   outline-offset: 3px;
 }
 
-/* Mobile Touch Target Standards */
 .touch-target {
   min-height: 48px;
   min-width: 48px;
