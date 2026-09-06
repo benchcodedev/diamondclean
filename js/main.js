@@ -276,26 +276,30 @@ function initVideoPlayer() {
 
   if (!videoElement) return;
 
-  // Video topic metadata with chapter timestamps
-  const videoTopics = {
-    'profile': {
-      title: 'Diamond Clean — Profil Pasokan Chemical & Kemasan 5L Industri',
-      desc: 'Saksikan komitmen kami dalam menghadirkan formulasi konsentrat pembersih berdaya bersih tinggi dengan kemasan 5L hemat biaya bagi mitra usaha.',
-      badge: 'PRODUKSI & SUPPLY 5L',
-      time: 0
-    },
-    'testing': {
-      title: 'Uji Kinerja Formulasi: Busa Melimpah & Daya Angkat Minyak Seketika',
-      desc: 'Demonstrasi daya angkat lemak pada sabun cuci piring dan performa busa salju shampo mobil yang efektif namun tetap aman dengan pH balance seimbang.',
-      badge: 'UJI LABORATORIUM & KINERJA',
-      time: 3.3
-    },
-    'halal': {
-      title: 'Standar Mutu Higienis & Kepatuhan Sertifikasi Halal Indonesia',
-      desc: 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan najis dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
-      badge: '100% HALAL INDONESIA',
-      time: 6.6
-    }
+  // Video topic metadata with chapter timestamps (bilingual responsive)
+  const getVideoTopics = () => {
+    const lang = (window.DiamondI18n && window.DiamondI18n.get) ? window.DiamondI18n.get() : 'id';
+    const dict = (window.DiamondI18n && window.DiamondI18n.translations && window.DiamondI18n.translations[lang]) || {};
+    return {
+      'profile': {
+        title: dict.video_chapter_1_title || 'Diamond Clean — Profil Pasokan Chemical & Kemasan 5L Industri',
+        desc: dict.video_chapter_1_desc || 'Saksikan komitmen kami dalam menghadirkan formulasi konsentrat pembersih berdaya bersih tinggi dengan kemasan 5L hemat biaya bagi mitra usaha.',
+        badge: dict.video_chapter_1_badge || 'PRODUKSI & SUPPLY 5L',
+        time: 0
+      },
+      'testing': {
+        title: dict.video_chapter_2_title || 'Uji Kinerja Formulasi: Busa Melimpah & Daya Angkat Minyak Seketika',
+        desc: dict.video_chapter_2_desc || 'Demonstrasi daya angkat lemak pada sabun cuci piring dan performa busa salju shampo mobil yang efektif namun tetap aman dengan pH balance seimbang.',
+        badge: dict.video_chapter_2_badge || 'UJI LABORATORIUM & KINERJA',
+        time: 3.3
+      },
+      'halal': {
+        title: dict.video_chapter_3_title || 'Standar Mutu Higienis & Kepatuhan Sertifikasi Halal Indonesia',
+        desc: dict.video_chapter_3_desc || 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan najis dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
+        badge: dict.video_chapter_3_badge || '100% HALAL INDONESIA',
+        time: 6.6
+      }
+    };
   };
 
   const updatePlayBtnIcon = (isPlaying) => {
@@ -372,7 +376,8 @@ function initVideoPlayer() {
         if (key === activeKey) {
           if (!b.classList.contains('active')) {
             b.classList.add('active');
-            const topicData = videoTopics[activeKey];
+            const topics = getVideoTopics();
+            const topicData = topics[activeKey];
             if (topicData) {
               if (videoTitle) videoTitle.textContent = topicData.title;
               if (videoDesc) videoDesc.textContent = topicData.desc;
@@ -420,7 +425,8 @@ function initVideoPlayer() {
       btn.classList.add('active');
 
       const topicKey = btn.getAttribute('data-topic');
-      const topicData = videoTopics[topicKey];
+      const topics = getVideoTopics();
+      const topicData = topics[topicKey];
       if (topicData) {
         if (videoTitle) videoTitle.textContent = topicData.title;
         if (videoDesc) videoDesc.textContent = topicData.desc;
@@ -435,6 +441,19 @@ function initVideoPlayer() {
         startPlayback();
       }
     });
+  });
+
+  // Re-sync active topic text when language switches
+  window.addEventListener('languageChanged', () => {
+    const activeBtn = document.querySelector('.video-tab-btn.active') || document.querySelector('.video-tab-btn');
+    const topicKey = activeBtn ? activeBtn.getAttribute('data-topic') : 'profile';
+    const topics = getVideoTopics();
+    const topicData = topics[topicKey];
+    if (topicData) {
+      if (videoTitle) videoTitle.textContent = topicData.title;
+      if (videoDesc) videoDesc.textContent = topicData.desc;
+      if (videoBadge) videoBadge.textContent = topicData.badge;
+    }
   });
 }
 
@@ -455,7 +474,18 @@ function initWhatsAppForms() {
     const volume = document.getElementById('form-volume')?.value || 'Konsultasi Kebutuhan';
     const notes = document.getElementById('form-notes')?.value.trim() || 'Mohon info harga grosir dan ketersediaan sampel.';
 
-    const message =
+    const isEn = (window.DiamondI18n && window.DiamondI18n.get && window.DiamondI18n.get() === 'en');
+    const message = isEn ?
+      `*OFFICIAL QUOTATION & SAMPLE REQUEST — DIAMOND CLEAN*
+------------------------------------------------
+👤 *Full Name:* ${name}
+🏢 *Company / Business:* ${company}
+🏷️ *Business Sector:* ${sector}
+🧴 *Required Product:* ${product}
+📦 *Estimated Volume:* ${volume}
+💬 *Notes / Special Requests:* ${notes}
+------------------------------------------------
+_Sent automatically via Diamond Clean Official Website_` :
       `*PERMINTAAN PENAWARAN & SAMPEL — DIAMOND CLEAN*
 ------------------------------------------------
 👤 *Nama:* ${name}

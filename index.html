@@ -41,13 +41,17 @@
       </a>
 
       <nav class="nav-menu" id="nav-menu" aria-label="Menu Navigasi Utama">
-        <a href="/" class="nav-link active">Home</a>
-        <a href="/about" class="nav-link">About Us</a>
-        <a href="/solutions" class="nav-link">Product Catalogue</a>
-        <a href="/industries" class="nav-link">Industries</a>
-        <a href="/sustainability" class="nav-link">Certifications</a>
-        <a href="/contact" class="nav-link">Contact Us</a>
-        <a href="/contact#consultation" class="btn btn-accent btn-sm">Consultation</a>
+        <a href="/" class="nav-link active" data-i18n="nav_home">Home</a>
+        <a href="/about" class="nav-link" data-i18n="nav_about">About Us</a>
+        <a href="/solutions" class="nav-link" data-i18n="nav_solutions">Product Catalogue</a>
+        <a href="/industries" class="nav-link" data-i18n="nav_industries">Industries</a>
+        <a href="/sustainability" class="nav-link" data-i18n="nav_sustainability">Certifications</a>
+        <a href="/contact" class="nav-link" data-i18n="nav_contact">Contact Us</a>
+        <a href="/contact#consultation" class="btn btn-accent btn-sm" data-i18n="nav_consultation">Consultation</a>
+        <div class="lang-switch-container" aria-label="Language Selector">
+          <button type="button" class="lang-btn active" data-lang="id" aria-label="Bahasa Indonesia">ID</button>
+          <button type="button" class="lang-btn" data-lang="en" aria-label="English">EN</button>
+        </div>
       </nav>
 
       <button class="burger-menu touch-target" aria-label="Buka Menu Navigasi" aria-expanded="false">
@@ -72,17 +76,17 @@
             <svg width="15" height="15" viewBox="0 0 24 24" fill="currentColor">
               <path d="M12 2l2.4 7.2h7.6l-6 4.8 2.4 7.2-6.4-4.8-6.4 4.8 2.4-7.2-6-4.8h7.6z" />
             </svg>
-            SUPPLIER RESMI SABUN CHEMICAL B2B & 5L
+            <span data-i18n="hero_badge">SUPPLIER RESMI SABUN CHEMICAL B2B &amp; 5L</span>
           </span>
-          <h1>Solusi Kebersihan Industri & <span>Supplier Sabun 5L</span></h1>
-          <p class="subtitle">
+          <h1><span data-i18n="hero_title_prefix">Solusi Kebersihan HOREKA &amp; </span><span data-i18n="hero_title_highlight">Supplier Sabun 5L</span></h1>
+          <p class="subtitle" data-i18n="hero_desc">
             Diamond Clean menghadirkan pasokan konsentrat sabun dan chemical pembersih bermutu tinggi dengan kemasan
             5L hemat biaya untuk Hotel, Restoran, Café, Laundry, Car Wash, dan Fasilitas Komersial di
             seluruh Indonesia.
           </p>
           <div class="hero-buttons">
-            <a href="/contact#consultation" class="btn btn-accent btn-lg">Minta Konsultasi & Sampel</a>
-            <a href="/solutions" class="btn btn-white-outline btn-lg">Jelajahi Produk 5L</a>
+            <a href="/contact#consultation" class="btn btn-accent btn-lg" data-i18n="hero_cta_consult">Minta Konsultasi &amp; Sampel</a>
+            <a href="/solutions" class="btn btn-white-outline btn-lg" data-i18n="hero_cta_catalog">Jelajahi Produk 5L</a>
           </div>
         </div>
       </div>
@@ -95,9 +99,9 @@
   <section class="section-padding video-showcase-section" id="video-showcase">
     <div class="container">
       <div class="section-header text-center reveal">
-        <span class="badge badge-accent" style="margin-bottom: 0.75rem;">SHOWCASE VIDEO RESMI</span>
-        <h2 class="with-underline-center">Profil Operasional & Kinerja Diamond Clean</h2>
-        <p>
+        <span class="badge badge-accent" style="margin-bottom: 0.75rem;" data-i18n="video_badge">SHOWCASE VIDEO RESMI</span>
+        <h2 class="with-underline-center" data-i18n="video_title">Profil Operasional &amp; Kinerja Diamond Clean</h2>
+        <p data-i18n="video_desc">
           Saksikan bagaimana standar pengemasan 5L, efisiensi formulasi konsentrat, serta komitmen mutu
           kebersihan higienis kami diproduksi untuk mendukung kelancaran usaha Anda.
         </p>
@@ -165,20 +169,20 @@
               <path
                 d="M21 16V8a2 2 0 0 0-1-1.73l-7-4a2 2 0 0 0-2 0l-7 4A2 2 0 0 0 3 8v8a2 2 0 0 0 1 1.73l7 4a2 2 0 0 0 2 0l7-4A2 2 0 0 0 21 16z" />
             </svg>
-            1. Profil & Kemasan 5L
+            <span data-i18n="video_tab_1">1. Profil & Kemasan 5L</span>
           </button>
           <button class="video-tab-btn" data-topic="testing">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path
                 d="M14.7 6.3a1 1 0 0 0 0 1.4l1.6 1.6a1 1 0 0 0 1.4 0l3.77-3.77a6 6 0 0 1-7.94 7.94l-6.91 6.91a2.12 2.12 0 0 1-3-3l6.91-6.91a6 6 0 0 1 7.94-7.94l-3.76 3.76z" />
             </svg>
-            2. Uji Kinerja & Busa Pembersih
+            <span data-i18n="video_tab_2">2. Uji Kinerja & Busa Pembersih</span>
           </button>
           <button class="video-tab-btn" data-topic="halal">
             <svg width="16" height="16" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
               <path d="M12 22s8-4 8-10V5l-8-3-8 3v7c0 6 8 10 8 10z" />
             </svg>
-            3. Standar Higienitas Halal
+            <span data-i18n="video_tab_3">3. Standar Higienitas Halal</span>
           </button>
         </div>
       </div>
@@ -1340,7 +1344,8 @@
     </svg>
   </a>
 
-  <!-- Main JavaScript File -->
+  <!-- Internationalization & Main Scripts -->
+  <script src="js/i18n.js"></script>
   <script src="js/main.js"></script>
 </body>
 

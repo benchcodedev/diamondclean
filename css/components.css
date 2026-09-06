@@ -278,6 +278,94 @@
   width: 100%;
 }
 
+/* 3.1 LANGUAGE SWITCHER (Bilingual ID/EN Pill) */
+.lang-switch-container {
+  display: inline-flex;
+  align-items: center;
+  background: rgba(255, 255, 255, 0.18);
+  border: 1px solid rgba(255, 255, 255, 0.35);
+  border-radius: var(--radius-full);
+  padding: 3px;
+  gap: 2px;
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  transition: all 0.25s ease;
+  margin-left: 0.25rem;
+}
+
+.header.scrolled .lang-switch-container {
+  background: rgba(11, 110, 79, 0.08);
+  border-color: rgba(11, 110, 79, 0.22);
+}
+
+.lang-btn {
+  border: none;
+  background: transparent;
+  color: rgba(255, 255, 255, 0.9);
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  padding: 0.24rem 0.55rem;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  transition: all 0.2s ease;
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  line-height: 1;
+}
+
+.header.scrolled .lang-btn {
+  color: var(--color-dark-text);
+}
+
+.lang-btn:hover {
+  color: #FFFFFF;
+}
+
+.header.scrolled .lang-btn:hover {
+  color: var(--color-primary);
+}
+
+.lang-btn.active {
+  background: #FFFFFF;
+  color: var(--color-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.18);
+}
+
+.header.scrolled .lang-btn.active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  box-shadow: 0 2px 6px rgba(11, 110, 79, 0.3);
+}
+
+/* Mobile Drawer Language Switcher */
+.mobile-lang-container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  padding: 1.25rem 0 0.5rem;
+  border-top: 1px solid rgba(0, 0, 0, 0.08);
+  margin-top: 0.75rem;
+  width: 100%;
+}
+
+.mobile-lang-container .lang-btn {
+  font-size: 0.85rem;
+  padding: 0.5rem 1.25rem;
+  color: var(--color-dark-text);
+  border: 1.5px solid var(--color-border);
+  background: #FFFFFF;
+}
+
+.mobile-lang-container .lang-btn.active {
+  background: var(--color-primary);
+  color: #FFFFFF;
+  border-color: var(--color-primary);
+  box-shadow: 0 4px 10px rgba(11, 110, 79, 0.25);
+}
+
 /* Mobile Burger Icon */
 .burger-menu {
   display: none;
@@ -367,6 +455,29 @@
     width: 100%;
     margin-top: 1rem;
     text-align: center;
+  }
+
+  .nav-menu .lang-switch-container {
+    margin-left: 0;
+    margin-top: 0.5rem;
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    background: rgba(11, 110, 79, 0.08);
+    border: 1.5px solid rgba(11, 110, 79, 0.2);
+    padding: 4px;
+  }
+
+  .nav-menu .lang-switch-container .lang-btn {
+    flex: 1;
+    color: var(--color-dark-text);
+    padding: 0.5rem 1rem;
+    font-size: 0.85rem;
+  }
+
+  .nav-menu .lang-switch-container .lang-btn.active {
+    background: var(--color-primary);
+    color: #FFFFFF;
   }
   
   /* Backdrop overlay in deep emerald translucent */
