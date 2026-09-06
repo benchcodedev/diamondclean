@@ -827,6 +827,24 @@
 }
 
 @media (max-width: 768px) {
+  .btn {
+    white-space: normal;
+    text-align: center;
+    max-width: 100%;
+    line-height: 1.35;
+  }
+
+  .btn-lg {
+    padding: 0.85rem 1.35rem;
+    font-size: 0.925rem;
+    line-height: 1.35;
+  }
+
+  .btn-sm {
+    padding: 0.45rem 0.95rem;
+    font-size: 0.825rem;
+  }
+
   .floating-whatsapp {
     bottom: 1.25rem;
     right: 1.25rem;
