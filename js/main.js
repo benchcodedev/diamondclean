@@ -13,6 +13,8 @@ document.addEventListener('DOMContentLoaded', () => {
   initWhatsAppForms();
   initBackToTop();
   initSmoothAnchorScroll();
+  initProductLightbox();
+  initProductSlider();
 });
 
 /* --------------------------------------------------------------------------
@@ -53,7 +55,7 @@ function initStickyHeader() {
 function initMobileMenu() {
   const burgerMenu = document.querySelector('.burger-menu');
   const navMenu = document.querySelector('.nav-menu');
-  
+
   if (!burgerMenu || !navMenu) return;
 
   // Create or retrieve backdrop element
@@ -66,7 +68,7 @@ function initMobileMenu() {
 
   const toggleMenu = (forceClose = false) => {
     const shouldOpen = forceClose ? false : !navMenu.classList.contains('active');
-    
+
     if (shouldOpen) {
       burgerMenu.classList.add('open');
       navMenu.classList.add('active');
@@ -139,17 +141,17 @@ function initStatsCounters() {
     const suffix = counter.getAttribute('data-suffix') || '';
     const speed = parseInt(counter.getAttribute('data-speed')) || 1800;
     const stepTime = 25;
-    
+
     let current = 0;
     const increment = target / (speed / stepTime);
-    
+
     const timer = setInterval(() => {
       current += increment;
       if (current >= target) {
         current = target;
         clearInterval(timer);
       }
-      
+
       if (Number.isInteger(target)) {
         counter.textContent = Math.floor(current) + suffix;
       } else {
@@ -185,7 +187,7 @@ function initAccordions() {
     header.addEventListener('click', () => {
       const item = header.parentElement;
       const isActive = item.classList.contains('active');
-      
+
       // Close other accordions in the same container
       const container = item.closest('.accordion');
       if (container) {
@@ -193,7 +195,7 @@ function initAccordions() {
           if (other !== item) other.classList.remove('active');
         });
       }
-      
+
       // Toggle current
       if (isActive) {
         item.classList.remove('active');
@@ -225,8 +227,8 @@ function initVideoPlayer() {
   const videoTopics = {
     'profile': {
       title: 'Diamond Clean — Profil Pasokan Chemical & Kemasan 5L Industri',
-      desc: 'Saksikan komitmen kami dalam menghadirkan formulasi konsentrat pembersih berdaya bersih tinggi dengan kemasan jerigen 5 Liter hemat biaya bagi mitra usaha.',
-      badge: 'PRODUKSI & SUPLAI JERIGEN 5L',
+      desc: 'Saksikan komitmen kami dalam menghadirkan formulasi konsentrat pembersih berdaya bersih tinggi dengan kemasan 5L hemat biaya bagi mitra usaha.',
+      badge: 'PRODUKSI & SUPPLY 5L',
       src: 'assets/videos/demo-video.mp4'
     },
     'testing': {
@@ -319,7 +321,7 @@ function initVideoPlayer() {
         if (videoTitle) videoTitle.textContent = topicData.title;
         if (videoDesc) videoDesc.textContent = topicData.desc;
         if (videoBadge) videoBadge.textContent = topicData.badge;
-        
+
         // Reset playback cleanly
         videoElement.pause();
         if (overlayDetails) overlayDetails.classList.remove('playing');
@@ -346,8 +348,8 @@ function initWhatsAppForms() {
     const volume = document.getElementById('form-volume')?.value || 'Konsultasi Kebutuhan';
     const notes = document.getElementById('form-notes')?.value.trim() || 'Mohon info harga grosir dan ketersediaan sampel.';
 
-    const message = 
-`*PERMINTAAN PENAWARAN & SAMPEL — DIAMOND CLEAN*
+    const message =
+      `*PERMINTAAN PENAWARAN & SAMPEL — DIAMOND CLEAN*
 ------------------------------------------------
 👤 *Nama:* ${name}
 🏢 *Perusahaan / Usaha:* ${company}
@@ -403,21 +405,257 @@ function initBackToTop() {
    -------------------------------------------------------------------------- */
 function initSmoothAnchorScroll() {
   document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
       const targetId = this.getAttribute('href');
       if (targetId === '#' || targetId === '') return;
-      
+
       const targetEl = document.querySelector(targetId);
       if (targetEl) {
         e.preventDefault();
         const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
         const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
-        
+
         window.scrollTo({
           top: targetPos,
           behavior: 'smooth'
         });
       }
     });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   10. PRODUCT FLYER LIGHTBOX MODAL
+   -------------------------------------------------------------------------- */
+function initProductLightbox() {
+  let modal = document.querySelector('.flyer-modal');
+  if (!modal) {
+    modal = document.createElement('div');
+    modal.className = 'flyer-modal';
+    modal.innerHTML = `
+      <div class="flyer-modal-container">
+        <div class="flyer-modal-header">
+          <span class="flyer-modal-title">Brosur Produk Diamond Clean 5L</span>
+          <button class="flyer-modal-close" aria-label="Tutup Brosur">&times;</button>
+        </div>
+        <div class="flyer-modal-body">
+          <img src="" alt="Brosur Produk" id="flyer-modal-img">
+        </div>
+      </div>
+    `;
+    document.body.appendChild(modal);
+
+    const closeBtn = modal.querySelector('.flyer-modal-close');
+    const closeModal = () => modal.classList.remove('active');
+
+    closeBtn.addEventListener('click', closeModal);
+    modal.addEventListener('click', (e) => {
+      if (e.target === modal) closeModal();
+    });
+
+    document.addEventListener('keydown', (e) => {
+      if (e.key === 'Escape' && modal.classList.contains('active')) {
+        closeModal();
+      }
+    });
+  }
+
+  const modalImg = modal.querySelector('#flyer-modal-img');
+  const modalTitle = modal.querySelector('.flyer-modal-title');
+
+  document.querySelectorAll('.product-img-box').forEach(box => {
+    box.addEventListener('click', (e) => {
+      // Prevent opening lightbox when clicking slider controls
+      if (e.target.closest('.slider-nav') || e.target.closest('.variant-pill') || e.target.closest('.slider-dots')) {
+        return;
+      }
+
+      // Check for active slide in slider, or regular img
+      const img = box.querySelector('.slider-slide.active img') || box.querySelector('img');
+      if (img && modalImg) {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt || 'Brosur Produk';
+        if (modalTitle) {
+          modalTitle.textContent = img.alt || 'Brosur Produk Diamond Clean 5L';
+        }
+        modal.classList.add('active');
+      }
+    });
+  });
+}
+
+/* --------------------------------------------------------------------------
+   11. MULTI-VARIANT PRODUCT SLIDER (Bisa Digeser-geser)
+   -------------------------------------------------------------------------- */
+function initProductSlider() {
+  document.querySelectorAll('.product-slider').forEach(slider => {
+    const slides = slider.querySelectorAll('.slider-slide');
+    if (slides.length <= 1) return;
+
+    let currentIndex = 0;
+    const prevBtn = slider.querySelector('.slider-prev');
+    const nextBtn = slider.querySelector('.slider-next');
+    const dots = slider.querySelectorAll('.slider-dot');
+    const card = slider.closest('.product-card');
+    const pills = card ? card.querySelectorAll('.variant-pill') : slider.querySelectorAll('.variant-pill');
+
+    let autoPlayTimer = null;
+    const isAutoPlay = slider.getAttribute('data-autoplay') === 'true';
+    const autoPlayDelay = parseInt(slider.getAttribute('data-autoplay-delay')) || 4500;
+
+    function goToSlide(index) {
+      if (index < 0) index = slides.length - 1;
+      if (index >= slides.length) index = 0;
+      currentIndex = index;
+
+      slides.forEach((slide, i) => {
+        slide.classList.toggle('active', i === currentIndex);
+      });
+
+      dots.forEach((dot, i) => {
+        dot.classList.toggle('active', i === currentIndex);
+      });
+
+      pills.forEach((pill, i) => {
+        pill.classList.toggle('active', i === currentIndex);
+      });
+
+      if (card) {
+        const activeSlide = slides[currentIndex];
+        const variantName = activeSlide.getAttribute('data-variant');
+        const dynamicTitle = activeSlide.getAttribute('data-title');
+        const dynamicDesc = activeSlide.getAttribute('data-desc');
+        const aromaName = activeSlide.getAttribute('data-aroma');
+        const customWaText = activeSlide.getAttribute('data-wa-text');
+
+        // Dynamic elements
+        const titleEl = card.querySelector('.card-dynamic-title');
+        const descEl = card.querySelector('.card-dynamic-desc');
+        const aromaVal = card.querySelector('.spec-aroma-val');
+        const specsContainer = card.querySelector('.product-specs');
+
+        // Trigger smooth fade transition
+        const animTargets = [titleEl, descEl, specsContainer].filter(Boolean);
+        animTargets.forEach(el => el.classList.add('card-text-fading'));
+
+        setTimeout(() => {
+          if (titleEl && dynamicTitle) {
+            titleEl.textContent = dynamicTitle;
+          }
+
+          if (descEl && dynamicDesc) {
+            descEl.textContent = dynamicDesc;
+          }
+
+          if (aromaVal && aromaName) {
+            aromaVal.textContent = aromaName;
+          }
+
+          // Dynamic specs (spec 1, 2, 3)
+          for (let s = 1; s <= 3; s++) {
+            const specLabel = activeSlide.getAttribute(`data-spec${s}-label`);
+            const specVal = activeSlide.getAttribute(`data-spec${s}-val`);
+            const labelEl = card.querySelector(`.spec-label-${s}`);
+            const valEl = card.querySelector(`.spec-val-${s}`);
+            if (labelEl && specLabel) labelEl.textContent = specLabel;
+            if (valEl && specVal) valEl.textContent = specVal;
+          }
+
+          // WhatsApp CTA Button update
+          const waBtn = card.querySelector('a[href^="https://wa.me"]');
+          if (waBtn) {
+            let msgText = customWaText;
+            if (!msgText && variantName) {
+              msgText = `Halo Diamond Clean, saya ingin pesan ${variantName} 5L.`;
+            }
+            if (msgText) {
+              waBtn.href = `https://wa.me/62882007907237?text=${encodeURIComponent(msgText)}`;
+            }
+          }
+
+          animTargets.forEach(el => el.classList.remove('card-text-fading'));
+        }, 160);
+      }
+    }
+
+    function startAutoPlay() {
+      if (!isAutoPlay) return;
+      stopAutoPlay();
+      autoPlayTimer = setInterval(() => {
+        goToSlide(currentIndex + 1);
+      }, autoPlayDelay);
+    }
+
+    function stopAutoPlay() {
+      if (autoPlayTimer) {
+        clearInterval(autoPlayTimer);
+        autoPlayTimer = null;
+      }
+    }
+
+    if (isAutoPlay) {
+      startAutoPlay();
+      if (card) {
+        card.addEventListener('mouseenter', stopAutoPlay);
+        card.addEventListener('mouseleave', startAutoPlay);
+      }
+      slider.addEventListener('touchstart', stopAutoPlay, { passive: true });
+      slider.addEventListener('touchend', () => {
+        setTimeout(startAutoPlay, 2000);
+      }, { passive: true });
+    }
+
+    if (prevBtn) {
+      prevBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentIndex - 1);
+        startAutoPlay();
+      });
+    }
+
+    if (nextBtn) {
+      nextBtn.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(currentIndex + 1);
+        startAutoPlay();
+      });
+    }
+
+    dots.forEach((dot, idx) => {
+      dot.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(idx);
+        startAutoPlay();
+      });
+    });
+
+    pills.forEach((pill, idx) => {
+      pill.addEventListener('click', (e) => {
+        e.stopPropagation();
+        goToSlide(idx);
+        startAutoPlay();
+      });
+    });
+
+    // Touch swipe support
+    let touchStartX = 0;
+    let touchEndX = 0;
+
+    slider.addEventListener('touchstart', (e) => {
+      touchStartX = e.changedTouches[0].screenX;
+    }, { passive: true });
+
+    slider.addEventListener('touchend', (e) => {
+      touchEndX = e.changedTouches[0].screenX;
+      const diff = touchStartX - touchEndX;
+      if (Math.abs(diff) > 40) {
+        if (diff > 0) {
+          goToSlide(currentIndex + 1);
+        } else {
+          goToSlide(currentIndex - 1);
+        }
+        startAutoPlay();
+      }
+    }, { passive: true });
   });
 }
