@@ -49,7 +49,7 @@
       video_chapter_2_desc: 'Demonstrasi daya angkat lemak pada sabun cuci piring dan performa busa salju shampo mobil yang efektif namun tetap aman dengan pH balance seimbang.',
       video_chapter_2_badge: 'UJI LABORATORIUM & KINERJA',
       video_chapter_3_title: 'Standar Mutu Higienis & Kepatuhan Sertifikasi Halal Indonesia',
-      video_chapter_3_desc: 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan najis dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
+      video_chapter_3_desc: 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan non-halal dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
       video_chapter_3_badge: '100% HALAL INDONESIA'
     },
 
@@ -86,7 +86,7 @@
       video_chapter_2_desc: 'Demonstrating instant grease-cutting dishwashing action and thick snow foam car shampoo that is gentle and pH-balanced.',
       video_chapter_2_badge: 'LAB TESTING & PERFORMANCE',
       video_chapter_3_title: 'Hygienic Standards & Official Halal Indonesia Compliance',
-      video_chapter_3_desc: 'All Diamond Clean product formulations are certified free from najis and prohibited alcohol, ensuring complete safety for your establishments.',
+      video_chapter_3_desc: 'All Diamond Clean product formulations are certified free from non-halal ingredients and prohibited alcohol, ensuring complete safety for your establishments.',
       video_chapter_3_badge: '100% HALAL INDONESIA'
     }
   };
@@ -357,8 +357,10 @@
     // Halal Section (Home & Sustainability)
     'KEAMANAN & KEPATUHAN': 'SAFETY & COMPLIANCE',
     'Jaminan Mutu & Sertifikasi Halal Indonesia Resmi': 'Quality Assurance & Official Halal Indonesia Certification',
+    'Diamond Clean menjamin seluruh formula diproduksi di fasilitas higienis bebas dari bahan non-halal, bebas alkohol terlarang, dan memenuhi standar keamanan kontak makanan untuk restoran serta hotel.':
+      'Diamond Clean ensures every formula is manufactured in hygienic facilities free from non-halal ingredients, prohibited alcohol, and meets food-contact safety standards for restaurants and hotels.',
     'Diamond Clean menjamin seluruh formula diproduksi di fasilitas higienis bebas dari bahan najis, bebas alkohol terlarang, dan memenuhi standar keamanan kontak makanan untuk restoran serta hotel.':
-      'Diamond Clean ensures every formula is manufactured in hygienic facilities free from impurities and prohibited alcohol, meeting food-contact safety standards for restaurants and hotels.',
+      'Diamond Clean ensures every formula is manufactured in hygienic facilities free from non-halal ingredients, prohibited alcohol, and meets food-contact safety standards for restaurants and hotels.',
     '100% Halal Certified': '100% Halal Certified',
     'Sertifikasi resmi Halal Indonesia untuk rasa aman mitra F&B dan hotel syariah.':
       'Official Halal Indonesia certification providing peace of mind for F&B partners and sharia hotels.',
@@ -375,7 +377,8 @@
       'In hospitality, catering, and culinary sectors, halal standards extend beyond raw food ingredients to encompass every cleaning substance contacting cooking and serving ware.',
     'Diamond Clean menjamin seluruh formulasi sabun cuci piring, pembersih meja, hand soap, hingga detergen pakaian diproduksi secara halal:':
       'Diamond Clean guarantees that all dish soaps, table sanitizers, hand soaps, and laundry detergents are produced under strict halal protocols:',
-    'Bebas Bahan Najis:': 'Free from Impurities (Najis):',
+    'Bebas Bahan Non-Halal:': 'Free from Impurities:',
+    'Bebas Bahan Najis:': 'Free from Impurities:',
     'Tidak mengandung turunan hewani non-halal atau lemak babi dalam agen surfaktan.':
       'Zero non-halal animal derivatives or lard in any surfactant agents.',
     'Bebas Alkohol Khamr Terlarang:': 'Free from Prohibited Alcohol:',
@@ -572,8 +575,10 @@
     'Sertifikasi Halal Indonesia': 'Halal Indonesia Certified',
     'STANDAR KEBERSIHAN RESMI': 'OFFICIAL HYGIENE STANDARD',
     'Komitmen Mutu Higienis': 'Hygienic Quality Commitment',
+    'Seluruh bahan baku surfaktan yang digunakan telah teruji bebas non-halal, ramah lingkungan (biodegradable), dan memiliki pH seimbang yang aman bagi kontak kulit harian staf Anda.':
+      'All surfactant raw materials are strictly tested free from non-halal ingredients, biodegradable, and formulated with a balanced pH safe for daily staff handling.',
     'Seluruh bahan baku surfaktan yang digunakan telah teruji bebas najis, ramah lingkungan (biodegradable), dan memiliki pH seimbang yang aman bagi kontak kulit harian staf Anda.':
-      'All surfactant raw materials are strictly tested free from non-halal impurities, biodegradable, and formulated with a balanced pH safe for daily staff handling.',
+      'All surfactant raw materials are strictly tested free from non-halal ingredients, biodegradable, and formulated with a balanced pH safe for daily staff handling.',
     'Minta Sampel Tester Gratis': 'Request Free Tester Samples',
     'ARAH STRATEGIS': 'STRATEGIC VISION',
     'Visi & Misi Perusahaan': 'Company Vision & Mission',

@@ -295,7 +295,7 @@ function initVideoPlayer() {
       },
       'halal': {
         title: dict.video_chapter_3_title || 'Standar Mutu Higienis & Kepatuhan Sertifikasi Halal Indonesia',
-        desc: dict.video_chapter_3_desc || 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan najis dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
+        desc: dict.video_chapter_3_desc || 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan non-halal dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
         badge: dict.video_chapter_3_badge || '100% HALAL INDONESIA',
         time: 6.6
       }
