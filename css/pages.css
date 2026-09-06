@@ -129,6 +129,9 @@
   font-size: 0.925rem;
   color: var(--color-muted-text);
   line-height: 1.65;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
 }
 
 /* --------------------------------------------------------------------------
@@ -919,6 +922,13 @@
   width: 100%;
 }
 
+.halal-detail-content p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  line-height: 1.7;
+}
+
 .halal-check-list {
   list-style: none;
   padding: 0;
@@ -934,6 +944,12 @@
   align-items: flex-start;
   font-size: 0.95rem;
   line-height: 1.6;
+}
+
+.halal-check-list li span {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
 }
 
 .halal-check-list svg {
@@ -968,6 +984,9 @@
   color: var(--color-body-text);
   line-height: 1.7;
   margin-bottom: 1.5rem;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: center;
 }
 
 /* Reusable 2-Column Responsive Grids across Pages */
@@ -1430,9 +1449,24 @@
     gap: 2rem;
   }
 
+  .halal-detail-content p,
+  .halal-check-list li span {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.65;
+  }
+
   .halal-cert-box {
     padding: 2.25rem 1.25rem;
     border-radius: var(--radius-lg);
+  }
+
+  .halal-cert-box p {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.6;
   }
 
   .halal-seal-img {
