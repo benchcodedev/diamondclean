@@ -987,6 +987,44 @@
   width: 100%;
 }
 
+/* Story Stats Grid (about.html) */
+.story-stats-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: 2.5rem;
+  margin-top: 2.25rem;
+  max-width: 440px;
+  align-items: flex-start;
+}
+
+.story-stat-item h3 {
+  font-size: 2.15rem;
+  font-weight: 800;
+  margin-bottom: 0.25rem;
+  line-height: 1.1;
+}
+
+.story-stat-item:first-child h3 {
+  color: var(--color-primary);
+}
+
+.story-stat-item:last-child {
+  border-left: 2px solid var(--color-border);
+  padding-left: 2.25rem;
+}
+
+.story-stat-item:last-child h3 {
+  color: var(--color-accent);
+}
+
+.story-stat-item p {
+  font-size: 0.875rem;
+  color: var(--color-muted-text);
+  margin: 0;
+  line-height: 1.45;
+  font-weight: 500;
+}
+
 .vision-mission-grid {
   display: grid;
   grid-template-columns: 1fr 1fr;
@@ -1529,6 +1567,87 @@
     border-radius: var(--radius-md);
     box-sizing: border-box;
   }
+
+  /* About Page Mobile Polish & Justification */
+  .story-grid {
+    grid-template-columns: 1fr;
+    gap: 2.25rem;
+  }
+
+  .story-desc-text,
+  .story-grid .reveal-left > p {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.7;
+  }
+
+  .story-stats-grid {
+    grid-template-columns: 1fr 1fr;
+    gap: 1.5rem;
+    margin-top: 1.75rem;
+    max-width: 100%;
+    width: 100%;
+  }
+
+  .story-stat-item h3 {
+    font-size: 1.85rem;
+    margin-bottom: 0.2rem;
+  }
+
+  .story-stat-item:last-child {
+    border-left: 2px solid var(--color-border);
+    padding-left: 1.5rem;
+  }
+
+  .story-stat-item p {
+    font-size: 0.825rem;
+    line-height: 1.35;
+  }
+
+  .story-highlight-card {
+    padding: 2rem 1.25rem !important;
+  }
+
+  .story-highlight-desc {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+  }
+
+  .story-highlight-card .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
+  .vision-mission-grid {
+    grid-template-columns: 1fr;
+    gap: 1.75rem;
+  }
+
+  .vision-mission-grid .card {
+    padding: 2rem 1.25rem;
+  }
+
+  .vision-desc,
+  .mission-desc,
+  .vision-mission-grid p,
+  .vision-mission-grid li > span:last-child {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.65;
+  }
+
+  .page-hero-content p {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.65;
+  }
 }
 
 /* Extra small mobile screens (<= 375px) */
@@ -1582,5 +1701,21 @@
   .btn-halal-cta {
     font-size: 0.88rem;
     padding: 0.75rem 0.95rem;
+  }
+
+  .story-stats-grid {
+    gap: 1rem;
+  }
+
+  .story-stat-item h3 {
+    font-size: 1.65rem;
+  }
+
+  .story-stat-item:last-child {
+    padding-left: 1rem;
+  }
+
+  .story-stat-item p {
+    font-size: 0.78rem;
   }
 }
