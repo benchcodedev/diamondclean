@@ -105,28 +105,28 @@
       prod_2_spec2_val: 'Busa Melimpah Lembut',
 
       // Product 3 - Pembersih Lantai
-      prod_3_name: 'Pembersih Lantai',
-      prod_3_desc: 'Pembersih lantai antibakterial aroma Apel Segar. Cepat kering tanpa rasa lengket, bunuh kuman penyebab bau, lantai bersih mengkilap tahan lama.',
+      prod_3_name: 'Sabun Lantai (Apel & Daun Sereh)',
+      prod_3_desc: 'Pembersih lantai antibakterial aroma Extra Apel Segar & Daun Sereh alami. Cepat kering tanpa rasa lengket, bunuh 99.9% kuman, lantai bersih mengkilap tahan lama.',
       prod_3_spec1_label: 'Aroma:',
-      prod_3_spec1_val: 'Apel Segar Mewah',
-      prod_3_spec2_label: 'Hasil Permukaan:',
-      prod_3_spec2_val: 'Kilap & Tidak Lengket',
+      prod_3_spec1_val: 'Extra Apel / Daun Sereh',
+      prod_3_spec2_label: 'Proteksi:',
+      prod_3_spec2_val: '99.9% Bunuh Kuman & Bakteri',
 
-      // Product 4 - Sabun Mandi
-      prod_4_name: 'Sabun Mandi (Body Wash)',
-      prod_4_desc: 'Sabun mandi cair lembut busa melimpah dengan formula pelembab alami. Membersihkan kotoran secara mendalam, wangi segar mewah, tidak membuat kulit kering.',
+      // Product 4 - Pembersih Kaca & Meja
+      prod_4_name: 'Pembersih Kaca & Meja',
+      prod_4_desc: 'Cairan pembersih kaca, meja & stainless steel Extra Buah Apel. Formula streak-free kilap seketika tanpa noda bercak dan anti debu.',
       prod_4_spec1_label: 'Aroma:',
-      prod_4_spec1_val: 'Floral Fresh Mewah',
-      prod_4_spec2_label: 'Kelembaban:',
-      prod_4_spec2_val: 'Moisturizing & Lembut',
+      prod_4_spec1_val: 'Extra Buah Apel Segar',
+      prod_4_spec2_label: 'Aplikasi:',
+      prod_4_spec2_val: 'Kaca, Meja & Stainless',
 
-      // Product 5 - Pembersih Kaca & Meja
-      prod_5_name: 'Pembersih Kaca & Meja',
-      prod_5_desc: 'Cairan pembersih kaca, meja & stainless steel Extra Buah Apel. Formula streak-free kilap seketika tanpa noda bercak dan anti debu.',
-      prod_5_spec1_label: 'Aroma:',
-      prod_5_spec1_val: 'Extra Buah Apel',
+      // Product 5 - Cairan Pembersih Kerak
+      prod_5_name: 'Cairan Pembersih Kerak',
+      prod_5_desc: 'Formula ekstra kuat angkat kerak membandel lebih cepat, lindungi permukaan keramik, toilet, wastafel & kamar mandi, bersih kinclong seperti baru.',
+      prod_5_spec1_label: 'Formula:',
+      prod_5_spec1_val: 'Ekstra Kuat Angkat Kerak',
       prod_5_spec2_label: 'Aplikasi:',
-      prod_5_spec2_val: 'Kaca, Meja & Stainless',
+      prod_5_spec2_val: 'Toilet, Keramik & Wastafel',
 
       // Product 6 - Shampo Mobil
       prod_6_name: 'Shampo Mobil Touchless',
@@ -138,11 +138,11 @@
 
       // Product 7 - Detergen Cair
       prod_7_name: 'Detergen Cair Laundry',
-      prod_7_desc: 'Formula konsentrat aroma Dony segar & mewah tahan lama. Busa melimpah mudah bilas, angkat noda efektif, rawat warna pakaian tetap cerah.',
-      prod_7_spec1_label: 'Aroma:',
-      prod_7_spec1_val: 'Dony Segar Mewah',
-      prod_7_spec2_label: 'Daya Cuci:',
-      prod_7_spec2_val: 'Konsentrat Busa Cepat Bilas',
+      prod_7_desc: 'Formula konsentrat aroma Dony segar & Dony Blue mewah tahan lama. Busa melimpah mudah bilas, angkat noda efektif, rawat warna pakaian tetap cerah.',
+      prod_7_spec1_label: 'Varian:',
+      prod_7_spec1_val: 'Dony Classic / Dony Blue',
+      prod_7_spec2_label: 'Karakter:',
+      prod_7_spec2_val: 'Busa Melimpah & Lembut Kain',
 
       // Product 8 - Parfum Laundry
       prod_8_name: 'Parfum Laundry Premium',
@@ -312,27 +312,27 @@
 
       // Product 3 - Floor Cleaner
       prod_3_name: 'Floor Cleaner & Sanitizer',
-      prod_3_desc: 'Antibacterial floor detergent with Fresh Apple fragrance. Fast-drying, non-sticky, eliminates odor-causing bacteria, glossy clean finish.',
+      prod_3_desc: 'Antibacterial floor detergent with Fresh Apple & Lemongrass options. Fast-drying, non-sticky, kills 99.9% of bacteria, glossy clean finish.',
       prod_3_spec1_label: 'Scent:',
-      prod_3_spec1_val: 'Fresh Crisp Apple',
-      prod_3_spec2_label: 'Surface Finish:',
-      prod_3_spec2_val: 'Glossy & Non-Sticky',
+      prod_3_spec1_val: 'Fresh Apple / Lemongrass',
+      prod_3_spec2_label: 'Protection:',
+      prod_3_spec2_val: 'Kills 99.9% Bacteria',
 
-      // Product 4 - Body Wash
-      prod_4_name: 'Liquid Body Wash',
-      prod_4_desc: 'Gentle liquid body wash with rich foam and natural moisturizing formula. Deeply cleanses impurities, luxurious fresh scent, non-drying.',
+      // Product 4 - Glass Cleaner
+      prod_4_name: 'Glass & Surface Cleaner',
+      prod_4_desc: 'Streak-free cleaner for glass, tabletops & stainless steel with Apple aroma. Instant shine without water spots or dust accumulation.',
       prod_4_spec1_label: 'Scent:',
-      prod_4_spec1_val: 'Luxurious Fresh Floral',
-      prod_4_spec2_label: 'Moisture:',
-      prod_4_spec2_val: 'Hydrating & Gentle',
+      prod_4_spec1_val: 'Crisp Apple Fresh',
+      prod_4_spec2_label: 'Application:',
+      prod_4_spec2_val: 'Glass, Tables & Stainless',
 
-      // Product 5 - Glass Cleaner
-      prod_5_name: 'Glass & Surface Cleaner',
-      prod_5_desc: 'Streak-free cleaner for glass, tabletops & stainless steel with Apple aroma. Instant shine without water spots or dust accumulation.',
-      prod_5_spec1_label: 'Scent:',
-      prod_5_spec1_val: 'Crisp Apple Fresh',
+      // Product 5 - Heavy Duty Descaler
+      prod_5_name: 'Heavy-Duty Scale & Rust Remover',
+      prod_5_desc: 'Extra-strength descaling formula that rapidly dissolves stubborn bathroom grime, limescale, and soap scum on tiles, toilets, and basins.',
+      prod_5_spec1_label: 'Formula:',
+      prod_5_spec1_val: 'Extra Active Descaler',
       prod_5_spec2_label: 'Application:',
-      prod_5_spec2_val: 'Glass, Tables & Stainless',
+      prod_5_spec2_val: 'Toilets, Tiles & Basins',
 
       // Product 6 - Car Shampoo
       prod_6_name: 'Touchless Car Shampoo',
@@ -344,11 +344,11 @@
 
       // Product 7 - Laundry Detergent
       prod_7_name: 'Commercial Laundry Detergent',
-      prod_7_desc: 'Concentrated formula with lasting luxurious Dony scent. Rich suds, fast rinse, removes tough stains effectively while keeping fabric colors vibrant.',
-      prod_7_spec1_label: 'Scent:',
-      prod_7_spec1_val: 'Luxurious Dony Fresh',
-      prod_7_spec2_label: 'Washing Power:',
-      prod_7_spec2_val: 'High Concentrate Fast Rinse',
+      prod_7_desc: 'Concentrated formula with lasting luxurious Dony and Dony Blue fragrance. Rich suds, fast rinse, removes tough stains while keeping colors vibrant.',
+      prod_7_spec1_label: 'Variants:',
+      prod_7_spec1_val: 'Dony Classic / Dony Blue',
+      prod_7_spec2_label: 'Lather:',
+      prod_7_spec2_val: 'Rich Foam & Fabric Soft',
 
       // Product 8 - Laundry Perfume
       prod_8_name: 'Premium Laundry Perfume',
