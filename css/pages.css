@@ -998,6 +998,41 @@
   width: 100%;
 }
 
+.industry-detail-row p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  line-height: 1.7;
+}
+
+.industry-detail-row ul {
+  list-style: none;
+  padding: 0;
+  margin: 1.5rem 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.industry-detail-row ul li {
+  display: flex;
+  align-items: flex-start !important;
+  gap: 0.75rem;
+  font-size: 0.95rem;
+  line-height: 1.6;
+}
+
+.industry-detail-row ul li svg {
+  flex-shrink: 0;
+  margin-top: 3px;
+}
+
+.industry-detail-row ul li span {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+}
+
 .story-grid {
   display: grid;
   grid-template-columns: 1.15fr 0.85fr;
@@ -1238,6 +1273,9 @@
   color: rgba(255, 255, 255, 0.92);
   font-size: 1.15rem;
   line-height: 1.7;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
 }
 
 .breadcrumbs {
@@ -1493,6 +1531,28 @@
 
   .industry-detail-row [style*="order: 2"] {
     order: 0 !important;
+  }
+
+  .industry-detail-row p {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.65;
+  }
+
+  .industry-detail-row ul li span {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.6;
+  }
+
+  .industry-detail-row .btn {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
   }
 
   .form-row-2col {
