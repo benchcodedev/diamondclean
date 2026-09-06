@@ -880,6 +880,14 @@
   color: rgba(255, 255, 255, 0.92);
 }
 
+.halal-cta-wrap {
+  margin-top: 2.25rem;
+}
+
+.btn-halal-cta {
+  font-weight: 700;
+}
+
 .halal-badge-display {
   background: rgba(255, 255, 255, 0.12);
   backdrop-filter: blur(12px);
@@ -1225,6 +1233,19 @@
     padding: 2.5rem;
   }
 
+  .halal-cta-wrap {
+    width: 100%;
+  }
+
+  .btn-halal-cta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+
   .halal-detail-grid {
     grid-template-columns: 1fr;
     gap: 2.5rem;
@@ -1419,6 +1440,43 @@
     gap: 1.25rem;
   }
 
+  .halal-section-card {
+    padding: 2.25rem 1.25rem;
+    gap: 2.25rem;
+  }
+
+  .halal-section-card .halal-desc-text,
+  .halal-section-card .halal-feature-text,
+  .halal-section-card .halal-content-col > p,
+  .halal-section-card .sub-grid-2col p {
+    text-align: justify;
+    text-justify: inter-word;
+    text-align-last: left;
+    line-height: 1.65;
+  }
+
+  .halal-cta-wrap {
+    width: 100%;
+    margin-top: 1.75rem !important;
+  }
+
+  .btn-halal-cta {
+    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    text-align: center;
+    box-sizing: border-box;
+    padding: 0.85rem 1.25rem;
+    font-size: 0.95rem;
+  }
+
+  .halal-badge-display {
+    width: 100%;
+    box-sizing: border-box;
+    padding: 2.25rem 1.25rem;
+  }
+
   .contact-info-card {
     padding: 2rem 1.25rem;
   }
@@ -1519,5 +1577,10 @@
     font-size: 0.84rem;
     padding: 0.75rem 0.85rem;
     max-width: 100%;
+  }
+
+  .btn-halal-cta {
+    font-size: 0.88rem;
+    padding: 0.75rem 0.95rem;
   }
 }
