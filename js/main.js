@@ -276,50 +276,70 @@ function initVideoPlayer() {
 
   if (!videoElement) return;
 
-  // Video topic metadata
+  // Video topic metadata with chapter timestamps
   const videoTopics = {
     'profile': {
       title: 'Diamond Clean — Profil Pasokan Chemical & Kemasan 5L Industri',
       desc: 'Saksikan komitmen kami dalam menghadirkan formulasi konsentrat pembersih berdaya bersih tinggi dengan kemasan 5L hemat biaya bagi mitra usaha.',
       badge: 'PRODUKSI & SUPPLY 5L',
-      src: 'assets/videos/demo-video.mp4'
+      time: 0
     },
     'testing': {
       title: 'Uji Kinerja Formulasi: Busa Melimpah & Daya Angkat Minyak Seketika',
       desc: 'Demonstrasi daya angkat lemak pada sabun cuci piring dan performa busa salju shampo mobil yang efektif namun tetap aman dengan pH balance seimbang.',
       badge: 'UJI LABORATORIUM & KINERJA',
-      src: 'assets/videos/demo-video.mp4'
+      time: 3.3
     },
     'halal': {
       title: 'Standar Mutu Higienis & Kepatuhan Sertifikasi Halal Indonesia',
       desc: 'Seluruh lini formulasi sabun Diamond Clean diproduksi bebas dari bahan najis dan alkohol berbahaya, menjamin keamanan mutlak untuk hotel, resto, dan café Anda.',
       badge: '100% HALAL INDONESIA',
-      src: 'assets/videos/demo-video.mp4'
+      time: 6.6
     }
   };
 
-  const togglePlay = () => {
-    if (videoElement.paused) {
-      videoElement.play().then(() => {
-        if (overlayDetails) overlayDetails.classList.add('playing');
-        if (playTrigger) playTrigger.style.display = 'none';
-        if (playPauseBtn) playPauseBtn.innerHTML = `
-          <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
-            <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
-          </svg>
-        `;
-      }).catch(err => {
-        console.log('Video playback error:', err);
-      });
+  const updatePlayBtnIcon = (isPlaying) => {
+    if (!playPauseBtn) return;
+    if (isPlaying) {
+      playPauseBtn.innerHTML = `
+        <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
+          <path d="M6 19h4V5H6v14zm8-14v14h4V5h-4z"/>
+        </svg>
+      `;
     } else {
-      videoElement.pause();
-      if (overlayDetails) overlayDetails.classList.remove('playing');
-      if (playTrigger) playTrigger.style.display = 'flex';
-      if (playPauseBtn) playPauseBtn.innerHTML = `
+      playPauseBtn.innerHTML = `
         <svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor">
           <path d="M8 5v14l11-7z"/>
         </svg>
       `;
+    }
+  };
+
+  const startPlayback = () => {
+    const playPromise = videoElement.play();
+    if (playPromise !== undefined) {
+      playPromise.then(() => {
+        if (overlayDetails) overlayDetails.classList.add('playing');
+        if (playTrigger) playTrigger.style.display = 'none';
+        updatePlayBtnIcon(true);
+      }).catch(err => {
+        console.log('Video playback error:', err);
+      });
+    }
+  };
+
+  const pausePlayback = () => {
+    videoElement.pause();
+    if (overlayDetails) overlayDetails.classList.remove('playing');
+    if (playTrigger) playTrigger.style.display = 'flex';
+    updatePlayBtnIcon(false);
+  };
+
+  const togglePlay = () => {
+    if (videoElement.paused) {
+      startPlayback();
+    } else {
+      pausePlayback();
     }
   };
 
@@ -330,8 +350,39 @@ function initVideoPlayer() {
   if (videoElement) {
     videoElement.addEventListener('click', togglePlay);
     videoElement.addEventListener('ended', () => {
-      if (overlayDetails) overlayDetails.classList.remove('playing');
-      if (playTrigger) playTrigger.style.display = 'flex';
+      if (!videoElement.loop) {
+        pausePlayback();
+      }
+    });
+
+    // Auto-sync active tab button and caption during continuous playback
+    let isUserSeeking = false;
+    videoElement.addEventListener('timeupdate', () => {
+      if (isUserSeeking) return;
+      const cur = videoElement.currentTime;
+      let activeKey = 'profile';
+      if (cur >= 6.6) {
+        activeKey = 'halal';
+      } else if (cur >= 3.3) {
+        activeKey = 'testing';
+      }
+
+      tabButtons.forEach(b => {
+        const key = b.getAttribute('data-topic');
+        if (key === activeKey) {
+          if (!b.classList.contains('active')) {
+            b.classList.add('active');
+            const topicData = videoTopics[activeKey];
+            if (topicData) {
+              if (videoTitle) videoTitle.textContent = topicData.title;
+              if (videoDesc) videoDesc.textContent = topicData.desc;
+              if (videoBadge) videoBadge.textContent = topicData.badge;
+            }
+          }
+        } else {
+          b.classList.remove('active');
+        }
+      });
     });
   }
 
@@ -362,7 +413,7 @@ function initVideoPlayer() {
     });
   }
 
-  // Topic Switcher Tabs
+  // Topic Switcher Tabs - Seamless chapter navigation without stopping playback
   tabButtons.forEach(btn => {
     btn.addEventListener('click', () => {
       tabButtons.forEach(b => b.classList.remove('active'));
@@ -375,10 +426,13 @@ function initVideoPlayer() {
         if (videoDesc) videoDesc.textContent = topicData.desc;
         if (videoBadge) videoBadge.textContent = topicData.badge;
 
-        // Reset playback cleanly
-        videoElement.pause();
-        if (overlayDetails) overlayDetails.classList.remove('playing');
-        if (playTrigger) playTrigger.style.display = 'flex';
+        // Jump smoothly to chapter timestamp
+        if (typeof topicData.time === 'number') {
+          videoElement.currentTime = topicData.time;
+        }
+
+        // Keep playing continuously without pausing
+        startPlayback();
       }
     });
   });

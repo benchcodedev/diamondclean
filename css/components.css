@@ -467,14 +467,14 @@
 .video-overlay-details {
   position: absolute;
   inset: 0;
-  background: linear-gradient(to top, rgba(3, 35, 25, 0.9) 0%, rgba(3, 35, 25, 0.3) 50%, rgba(3, 35, 25, 0.6) 100%);
+  background: linear-gradient(to top, rgba(0, 0, 0, 0.6) 0%, transparent 32%, transparent 75%, rgba(0, 0, 0, 0.32) 100%);
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  padding: 2rem;
+  padding: clamp(0.6rem, 1.8vw, 1rem);
   z-index: 10;
   pointer-events: none;
-  transition: opacity 0.3s ease;
+  transition: opacity 0.35s ease;
 }
 
 .video-overlay-details.playing {
@@ -484,23 +484,29 @@
 .video-top-badges {
   display: flex;
   align-items: center;
-  justify-content: space-between;
-  gap: 1rem;
+  gap: 0.4rem;
+  flex-wrap: wrap;
 }
 
 .video-sparkle-tag {
   display: inline-flex;
   align-items: center;
-  gap: 0.5rem;
+  gap: 0.3rem;
   background: rgba(16, 185, 129, 0.25);
-  border: 1px solid rgba(134, 239, 172, 0.45);
+  border: 1px solid rgba(134, 239, 172, 0.4);
   color: #DCFCE7;
-  padding: 0.35rem 0.85rem;
+  padding: 0.18rem 0.55rem;
   border-radius: var(--radius-full);
-  font-size: 0.775rem;
+  font-size: 0.68rem;
   font-weight: 700;
-  letter-spacing: 0.05em;
-  backdrop-filter: blur(8px);
+  letter-spacing: 0.03em;
+  backdrop-filter: blur(6px);
+  -webkit-backdrop-filter: blur(6px);
+}
+
+.video-top-badges .badge-5l {
+  font-size: 0.68rem;
+  padding: 0.18rem 0.55rem;
 }
 
 .video-play-trigger {
@@ -508,8 +514,8 @@
   top: 50%;
   left: 50%;
   transform: translate(-50%, -50%);
-  width: 82px;
-  height: 82px;
+  width: 58px;
+  height: 58px;
   background: #FFFFFF;
   color: var(--color-primary);
   border-radius: var(--radius-full);
@@ -520,31 +526,90 @@
   cursor: pointer;
   z-index: 20;
   transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1), box-shadow 0.3s ease, background-color 0.3s ease;
-  box-shadow: 0 0 0 12px rgba(255, 255, 255, 0.25), 0 10px 30px rgba(0, 0, 0, 0.35);
+  box-shadow: 0 0 0 7px rgba(255, 255, 255, 0.22), 0 8px 24px rgba(0, 0, 0, 0.35);
 }
 
 .video-play-trigger:hover {
   transform: translate(-50%, -50%) scale(1.08);
   background: var(--color-accent);
   color: #FFFFFF;
-  box-shadow: 0 0 0 18px rgba(122, 193, 67, 0.35), 0 15px 35px rgba(0, 0, 0, 0.45);
+  box-shadow: 0 0 0 10px rgba(122, 193, 67, 0.35), 0 12px 28px rgba(0, 0, 0, 0.45);
 }
 
 .video-play-trigger svg {
-  width: 32px;
-  height: 32px;
-  margin-left: 4px;
+  width: 22px;
+  height: 22px;
+  margin-left: 3px;
+}
+
+.video-bottom-caption {
+  background: rgba(3, 35, 25, 0.65);
+  backdrop-filter: blur(8px);
+  -webkit-backdrop-filter: blur(8px);
+  border: 1px solid rgba(255, 255, 255, 0.15);
+  border-radius: var(--radius-md);
+  padding: 0.4rem 0.75rem;
+  max-width: 72%;
+  box-shadow: 0 4px 14px rgba(0, 0, 0, 0.22);
 }
 
 .video-bottom-caption h3 {
   color: #FFFFFF;
-  font-size: 1.5rem;
-  margin-bottom: 0.35rem;
+  font-size: clamp(0.78rem, 1.4vw, 0.95rem);
+  font-weight: 600;
+  margin-bottom: 0.15rem;
+  line-height: 1.25;
 }
 
 .video-bottom-caption p {
-  color: #E2E8F0;
-  font-size: 0.95rem;
+  color: rgba(226, 232, 240, 0.85);
+  font-size: clamp(0.68rem, 1.1vw, 0.78rem);
+  line-height: 1.3;
+  margin: 0;
+  display: -webkit-box;
+  -webkit-line-clamp: 1;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
+}
+
+@media (max-width: 768px) {
+  .video-overlay-details {
+    padding: 0.5rem;
+  }
+
+  .video-bottom-caption {
+    max-width: 95%;
+    padding: 0.3rem 0.55rem;
+  }
+
+  .video-bottom-caption h3 {
+    font-size: 0.75rem;
+    margin-bottom: 0;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
+  }
+
+  .video-bottom-caption p {
+    display: none;
+  }
+
+  .video-play-trigger {
+    width: 44px;
+    height: 44px;
+    box-shadow: 0 0 0 4px rgba(255, 255, 255, 0.25), 0 4px 14px rgba(0, 0, 0, 0.4);
+  }
+
+  .video-play-trigger svg {
+    width: 16px;
+    height: 16px;
+  }
+
+  .video-sparkle-tag,
+  .video-top-badges .badge-5l {
+    font-size: 0.62rem;
+    padding: 0.12rem 0.42rem;
+  }
 }
 
 /* Video Control Toolbar (When Active) */
