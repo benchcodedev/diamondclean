@@ -3,6 +3,59 @@
    Bumigas Architecture Adaptation with Smooth Physics & Mobile Transitions
    ========================================================================== */
 
+/* --------------------------------------------------------------------------
+   0. CLEAN URL MANAGER (Immediate URL normalization & Local routing)
+   -------------------------------------------------------------------------- */
+(function initCleanUrls() {
+  if (typeof window === 'undefined' || !window.location) return;
+  if (!window.location.protocol.startsWith('http')) return;
+
+  // Normalize URL in browser address bar immediately without reloading
+  try {
+    const path = window.location.pathname;
+    if (path.endsWith('/index.html') || path === '/index.html') {
+      const clean = path.replace(/\/index\.html$/, '') || '/';
+      window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+    } else if (path.endsWith('.html')) {
+      const clean = path.slice(0, -5);
+      window.history.replaceState(null, '', clean + window.location.search + window.location.hash);
+    }
+  } catch (e) {}
+
+  // Local development route resolution (for simple servers like python http.server)
+  document.addEventListener('click', function(e) {
+    const link = e.target.closest('a');
+    if (!link || !link.href) return;
+
+    const rawHref = link.getAttribute('href');
+    if (!rawHref || rawHref.startsWith('#') || rawHref.startsWith('mailto:') || rawHref.startsWith('tel:') || rawHref.startsWith('javascript:')) return;
+
+    const isLocal = window.location.hostname === 'localhost' || window.location.hostname === '127.0.0.1';
+    if (!isLocal) return;
+
+    try {
+      const url = new URL(link.href);
+      if (url.origin === window.location.origin) {
+        const routes = {
+          '/': '/index.html',
+          '/about': '/about.html',
+          '/solutions': '/solutions.html',
+          '/product': '/solutions.html',
+          '/industries': '/industries.html',
+          '/sustainability': '/sustainability.html',
+          '/contact': '/contact.html'
+        };
+
+        const targetPath = url.pathname.replace(/\/$/, '') || '/';
+        if (routes[targetPath]) {
+          e.preventDefault();
+          window.location.href = routes[targetPath] + url.search + url.hash;
+        }
+      }
+    } catch (err) {}
+  });
+})();
+
 document.addEventListener('DOMContentLoaded', () => {
   initStickyHeader();
   initMobileMenu();
