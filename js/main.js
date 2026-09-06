@@ -429,53 +429,134 @@ function initBackToTop() {
     backBtn = document.createElement('button');
     backBtn.className = 'back-to-top';
     backBtn.setAttribute('aria-label', 'Kembali ke atas');
-    backBtn.innerHTML = `
-      <svg width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5" stroke-linecap="round" stroke-linejoin="round">
-        <polyline points="18 15 12 9 6 15"></polyline>
-      </svg>
-    `;
+    backBtn.innerHTML = '<svg width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2.5"><polyline points="18 15 12 9 6 15"></polyline></svg>';
     document.body.appendChild(backBtn);
   }
 
   window.addEventListener('scroll', () => {
-    if (window.scrollY > 400) {
+    if (window.scrollY > 380) {
       backBtn.classList.add('visible');
     } else {
       backBtn.classList.remove('visible');
     }
   }, { passive: true });
 
-  backBtn.addEventListener('click', () => {
-    window.scrollTo({
-      top: 0,
-      behavior: 'smooth'
-    });
+  backBtn.addEventListener('click', (e) => {
+    e.preventDefault();
+    smoothScrollTo(0, 600);
   });
 }
 
 /* --------------------------------------------------------------------------
-   9. SMOOTH ANCHOR LINK SCROLL WITH HEADER OFFSET CALCULATION
+   9. HIGH-PERFORMANCE SMOOTH SCROLL ENGINE (Mobile/HP & Desktop)
    -------------------------------------------------------------------------- */
-function initSmoothAnchorScroll() {
-  document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function (e) {
-      const targetId = this.getAttribute('href');
-      if (targetId === '#' || targetId === '') return;
+function smoothScrollTo(targetY, duration = 600) {
+  const startY = window.pageYOffset || document.documentElement.scrollTop;
+  const diff = targetY - startY;
+  if (Math.abs(diff) < 2) return;
 
-      const targetEl = document.querySelector(targetId);
-      if (targetEl) {
-        e.preventDefault();
-        const headerHeight = document.querySelector('.header')?.offsetHeight || 80;
-        const targetPos = targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight;
+  // Use native smooth scrolling if supported and preferred, else animate with cubic-bezier
+  const startTime = performance.now();
+  const easeInOutCubic = t => (t < 0.5 ? 4 * t * t * t : 1 - Math.pow(-2 * t + 2, 3) / 2);
 
-        window.scrollTo({
-          top: targetPos,
-          behavior: 'smooth'
-        });
-      }
-    });
-  });
+  let animationFrame;
+  function step(currentTime) {
+    const elapsed = currentTime - startTime;
+    const progress = Math.min(elapsed / duration, 1);
+    const easedProgress = easeInOutCubic(progress);
+
+    window.scrollTo(0, startY + diff * easedProgress);
+
+    if (progress < 1) {
+      animationFrame = requestAnimationFrame(step);
+    }
+  }
+
+  // Cancel immediately if the user interacts with the screen during scrolling
+  const cancel = () => {
+    cancelAnimationFrame(animationFrame);
+    window.removeEventListener('wheel', cancel);
+    window.removeEventListener('touchstart', cancel);
+    window.removeEventListener('touchmove', cancel);
+  };
+  window.addEventListener('wheel', cancel, { passive: true });
+  window.addEventListener('touchstart', cancel, { passive: true });
+  window.addEventListener('touchmove', cancel, { passive: true });
+
+  animationFrame = requestAnimationFrame(step);
 }
+
+function initSmoothAnchorScroll() {
+  // Delegate click for any anchor link pointing to a section on the current page
+  document.addEventListener('click', function (e) {
+    const link = e.target.closest('a');
+    if (!link || !link.href) return;
+
+    const rawHref = link.getAttribute('href');
+    if (!rawHref) return;
+
+    let hash = '';
+    if (rawHref.startsWith('#')) {
+      hash = rawHref;
+    } else {
+      try {
+        const url = new URL(link.href, window.location.href);
+        const currentPath = window.location.pathname.replace(/\/$/, '') || '/';
+        const targetPath = url.pathname.replace(/\/$/, '') || '/';
+        const isSamePage = targetPath === currentPath ||
+                           targetPath.replace(/\.html$/, '') === currentPath.replace(/\.html$/, '') ||
+                           (currentPath === '/' && targetPath === '/index.html') ||
+                           (currentPath === '/index.html' && targetPath === '/');
+        if (url.origin === window.location.origin && isSamePage && url.hash) {
+          hash = url.hash;
+        }
+      } catch (err) {}
+    }
+
+    if (!hash || hash === '#' || hash === '') return;
+
+    const targetEl = document.querySelector(hash);
+    if (targetEl) {
+      e.preventDefault();
+
+      // If mobile menu is open, smoothly close it
+      const burgerMenu = document.querySelector('.burger-menu');
+      const navMenu = document.querySelector('.nav-menu');
+      const backdrop = document.querySelector('.mobile-menu-backdrop');
+      if (navMenu && navMenu.classList.contains('active')) {
+        burgerMenu?.classList.remove('open');
+        navMenu.classList.remove('active');
+        backdrop?.classList.remove('active');
+        document.body.style.overflow = '';
+      }
+
+      const headerHeight = document.querySelector('.header')?.offsetHeight || 75;
+      const targetPos = Math.max(0, targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight + 2);
+
+      smoothScrollTo(targetPos, 650);
+
+      try {
+        history.pushState(null, '', hash);
+      } catch (err) {}
+    }
+  });
+
+  // Handle smooth scroll on initial page load if hash exists
+  if (window.location.hash) {
+    window.addEventListener('load', () => {
+      setTimeout(() => {
+        try {
+          const targetEl = document.querySelector(window.location.hash);
+          if (targetEl) {
+            const headerHeight = document.querySelector('.header')?.offsetHeight || 75;
+            const targetPos = Math.max(0, targetEl.getBoundingClientRect().top + window.pageYOffset - headerHeight + 2);
+            smoothScrollTo(targetPos, 700);
+          }
+        } catch (e) {}
+      }, 150);
+    });
+  }
+};
 
 /* --------------------------------------------------------------------------
    10. PRODUCT FLYER LIGHTBOX MODAL
