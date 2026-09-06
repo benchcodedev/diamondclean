@@ -1245,6 +1245,14 @@
   color: rgba(255, 255, 255, 0.65);
 }
 
+.footer-bottom a {
+  transition: color var(--transition-fast);
+}
+
+.footer-bottom a:hover {
+  color: var(--color-accent) !important;
+}
+
 .footer-watermark {
   text-align: center;
   margin-top: 1.5rem;
