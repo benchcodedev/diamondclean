@@ -21,7 +21,9 @@ const MIME_TYPES = {
   '.webm': 'video/webm',
   '.woff': 'font/woff',
   '.woff2': 'font/woff2',
-  '.ttf': 'font/ttf'
+  '.ttf': 'font/ttf',
+  '.xml': 'application/xml; charset=utf-8',
+  '.txt': 'text/plain; charset=utf-8'
 };
 
 const server = http.createServer((req, res) => {
