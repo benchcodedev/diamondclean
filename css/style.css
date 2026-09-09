@@ -1,60 +1,74 @@
+@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
+
 /* ==========================================================================
    DIAMOND CLEAN - Enterprise Design System (style.css)
    Pure Green & White Aesthetic (Bumigas Architecture - Zero Blue)
    ========================================================================== */
 
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700&family=Poppins:wght@400;500;600;700;800&display=swap');
-
 :root {
-  /* Brand Color Palette - Harmonized with #69785A (Dark Sage / Olive Green) */
-  --color-primary: #69785A;         /* Primary Brand Sage Green */
-  --color-primary-dark: #515D46;    /* Deep Forest Sage */
-  --color-primary-light: #839670;   /* Bright Sage */
-  --color-secondary: #515D46;       /* Deep Forest Sage */
-  --color-secondary-dark: #3B4433;  /* Dark Forest Sage */
-  --color-accent: #C27926;          /* Warm Amber Caramel (Replaced harsh neon lime) */
-  --color-accent-hover: #A8651B;    /* Darker Warm Amber */
-  --color-light-mint: #F0F3ED;      /* Soft Light Sage Tint */
-  --color-mint-border: #D2DBC9;     /* Soft Sage Border */
-  /* Sage Green Color Palette */
-  --color-sage: #69785A;            /* User-selected Sage Green HEX #69785A */
-  --color-sage-dark: #515D46;       /* Deeper Sage for gradient depth */
-  --color-sage-light: #839670;      /* Lighter Sage */
-  --color-sage-rgb: 105, 120, 90;
-  
-  --color-bg: #FFFFFF;              /* Pure Crisp White */
-  --color-bg-light: #F8FAF9;        /* Soft Clean Off-White */
-  --color-bg-mint: #F4F6F2;         /* Clean Pale Mint Tint */
-  --color-dark-text: #111827;       /* Dark Charcoal */
-  --color-body-text: #374151;       /* Neutral Slate */
-  --color-muted-text: #6B7280;      /* Muted Slate */
-  --color-border: #E5E7EB;          /* Light Clean Gray Border */
-  --color-success: #69785A;         /* Rich Leaf Green */
-  
+  /* Brand Color Palette - Pure Emerald Green & Crisp White (No Blue) */
+  --color-primary: #0B6E4F;
+  /* Deep Emerald Clean */
+  --color-primary-dark: #064E3B;
+  /* Deep Forest Green */
+  --color-primary-light: #10B981;
+  /* Vibrant Emerald Green */
+  --color-secondary: #08553D;
+  /* Rich Deep Pine Green */
+  --color-secondary-dark: #043627;
+  /* Dark Forest Slate */
+  --color-accent: #7AC143;
+  /* Vibrant Fresh Lime Green */
+  --color-accent-hover: #68A538;
+  /* Darker Fresh Lime */
+  --color-light-mint: #EAF7F0;
+  /* Fresh Mint Light */
+  --color-mint-border: #BBF7D0;
+  /* Soft Mint Border */
+  --color-halal-green: #047857;
+  /* Halal Badge Emerald */
+
+  --color-bg: #FFFFFF;
+  /* Pure Crisp White */
+  --color-bg-light: #F8FAF9;
+  /* Soft Clean Off-White */
+  --color-bg-mint: #F0FDF4;
+  /* Clean Pale Mint Tint */
+  --color-dark-text: #111827;
+  /* Dark Charcoal */
+  --color-body-text: #374151;
+  /* Neutral Slate */
+  --color-muted-text: #6B7280;
+  /* Muted Slate */
+  --color-border: #E5E7EB;
+  /* Light Clean Gray Border */
+  --color-success: #16A34A;
+  /* Rich Leaf Green */
+
   /* RGB values for translucent green overlays & glassmorphism */
-  --color-primary-rgb: 105, 120, 90;
-  --color-secondary-rgb: 81, 93, 70;
-  --color-accent-rgb: 194, 121, 38;
+  --color-primary-rgb: 11, 110, 79;
+  --color-secondary-rgb: 8, 85, 61;
+  --color-accent-rgb: 122, 193, 67;
   --color-dark-text-rgb: 17, 24, 39;
-  
+
   /* Typography */
   --font-headings: 'Poppins', sans-serif;
   --font-body: 'Inter', sans-serif;
-  
+
   /* Elevation Shadows (Soft green/dark tinted) */
   --shadow-sm: 0 2px 8px rgba(105, 120, 90, 0.08);
   --shadow-md: 0 8px 24px rgba(105, 120, 90, 0.12);
   --shadow-lg: 0 16px 48px rgba(105, 120, 90, 0.16);
   --shadow-glow: 0 0 25px rgba(194, 121, 38, 0.35);
   --shadow-glass: 0 8px 32px 0 rgba(81, 93, 70, 0.15);
-  
+
   /* Radii */
   --radius-sm: 6px;
   --radius-md: 12px;
   --radius-lg: 20px;
   --radius-xl: 32px;
   --radius-full: 9999px;
-  
+
   /* Butter-Smooth Hardware-Accelerated Transitions */
   --transition-fast: all 0.2s cubic-bezier(0.16, 1, 0.3, 1);
   --transition-normal: all 0.35s cubic-bezier(0.16, 1, 0.3, 1);
@@ -62,7 +76,9 @@
 }
 
 /* Base Reset & Smooth Scroll Foundation */
-*, *::before, *::after {
+*,
+*::before,
+*::after {
   box-sizing: border-box;
   margin: 0;
   padding: 0;
@@ -96,7 +112,12 @@ body {
 }
 
 /* Headings in Deep Forest Green */
-h1, h2, h3, h4, h5, h6 {
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
   font-family: var(--font-headings);
   font-weight: 700;
   line-height: 1.25;
@@ -170,7 +191,8 @@ a {
   transition: var(--transition-fast);
 }
 
-img, video {
+img,
+video {
   max-width: 100%;
   height: auto;
   display: block;
@@ -235,7 +257,10 @@ img, video {
   color: #FFFFFF;
 }
 
-.bg-dark h1, .bg-dark h2, .bg-dark h3, .bg-dark h4 {
+.bg-dark h1,
+.bg-dark h2,
+.bg-dark h3,
+.bg-dark h4 {
   color: #FFFFFF;
 }
 
@@ -244,7 +269,10 @@ img, video {
 }
 
 /* Smooth Hardware-Accelerated Reveal Animations */
-.reveal, .reveal-left, .reveal-right, .reveal-scale {
+.reveal,
+.reveal-left,
+.reveal-right,
+.reveal-scale {
   opacity: 0;
   will-change: transform, opacity;
   transition: opacity 0.65s cubic-bezier(0.16, 1, 0.3, 1), transform 0.65s cubic-bezier(0.16, 1, 0.3, 1);
@@ -266,7 +294,10 @@ img, video {
   transform: scale(0.94);
 }
 
-.reveal.active, .reveal-left.active, .reveal-right.active, .reveal-scale.active {
+.reveal.active,
+.reveal-left.active,
+.reveal-right.active,
+.reveal-scale.active {
   opacity: 1;
   transform: translate(0, 0) scale(1);
 }
@@ -293,9 +324,11 @@ select:focus-visible {
   h1 {
     font-size: 2.2rem;
   }
+
   h2 {
     font-size: 1.75rem;
   }
+
   .section-padding {
     padding: 3.75rem 0;
   }
