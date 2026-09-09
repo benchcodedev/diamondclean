@@ -8,14 +8,46 @@
    -------------------------------------------------------------------------- */
 .hero {
   position: relative;
-  min-height: 88vh;
+  min-height: 100vh;
+  min-height: 100dvh;
   display: flex;
   align-items: center;
+  justify-content: center;
   color: #FFFFFF;
-  padding: 8.5rem 0 6rem 0;
+  padding: 7rem 0 4.5rem 0;
   overflow: hidden;
-  background-color: #69785A;
-  background: #69785A;
+  background-color: #0F2005;
+  background-image: 
+    /* Top navbar subtle vignette for link contrast */
+    linear-gradient(180deg, rgba(8, 18, 4, 0.45) 0%, rgba(8, 18, 4, 0.05) 15%, transparent 35%),
+    /* Bottom edge subtle vignette */
+    linear-gradient(0deg, rgba(8, 18, 4, 0.45) 0%, transparent 22%),
+    /* Hotspot: Radiant Chartreuse Lime Glow on upper-left (exact match to target screenshot) */
+    radial-gradient(ellipse 65% 58% at 21% 36%, 
+      rgba(155, 207, 44, 0.98) 0%, 
+      rgba(130, 184, 32, 0.92) 20%, 
+      rgba(98, 150, 22, 0.80) 42%, 
+      rgba(60, 102, 14, 0.50) 68%, 
+      transparent 100%
+    ),
+    /* Secondary warm-lime ambient spread */
+    radial-gradient(ellipse 85% 75% at 26% 40%, 
+      rgba(100, 155, 24, 0.75) 0%, 
+      rgba(64, 108, 16, 0.65) 40%, 
+      rgba(35, 68, 10, 0.45) 70%, 
+      transparent 100%
+    ),
+    /* Deep cinematic dark forest base (rich green transitioning to deep dark moss on the right & corners) */
+    radial-gradient(ellipse 120% 95% at 30% 45%, 
+      #568A14 0%, 
+      #3E6C10 25%, 
+      #254909 50%, 
+      #173007 75%, 
+      #0E1C04 100%
+    );
+  background-size: cover;
+  background-position: center;
+  background-repeat: no-repeat;
 }
 
 /* Background image */
@@ -23,9 +55,17 @@
   display: none;
 }
 
-/* Hero Overlay */
+/* Hero Overlay - 30% Smoke Edge Vignette (Provides depth without washing out the lime spotlight) */
 .hero-overlay {
-  display: none;
+  display: block;
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 95% 75% at 45% 42%, transparent 35%, rgba(10, 22, 5, 0.25) 75%, rgba(6, 15, 3, 0.40) 100%);
 }
 
 .hero .container {
@@ -47,24 +87,24 @@
   color: #FFFFFF;
   font-size: 3.5rem;
   font-weight: 800;
-  line-height: 1.18;
-  margin-bottom: 1.5rem;
-  text-shadow: 0 3px 14px rgba(24, 38, 20, 0.45);
+  line-height: 1.2;
+  margin-bottom: 1.4rem;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 .hero-content h1 span {
   color: #FFFFFF;
-  text-shadow: 0 3px 16px rgba(24, 38, 20, 0.5);
-  display: inline-block;
+  display: block;
+  text-shadow: 0 4px 20px rgba(0, 0, 0, 0.45);
 }
 
 .hero-content .subtitle {
-  font-size: 1.2rem;
-  color: rgba(255, 255, 255, 0.96);
-  margin-bottom: 2.5rem;
+  font-size: 1.15rem;
+  color: rgba(255, 255, 255, 0.94);
+  margin-bottom: 2.25rem;
   line-height: 1.75;
-  max-width: 780px;
-  text-shadow: 0 2px 8px rgba(24, 38, 20, 0.35);
+  max-width: 760px;
+  text-shadow: 0 2px 10px rgba(0, 0, 0, 0.4);
 }
 
 .hero-buttons {
@@ -72,6 +112,33 @@
   flex-wrap: wrap;
   justify-content: center;
   gap: 1.25rem;
+}
+
+.hero-buttons .btn {
+  font-size: 0.95rem;
+  font-weight: 600;
+  padding: 0.85rem 2rem;
+  border-radius: 8px;
+}
+
+.hero-buttons .btn-accent {
+  background-color: #C27926;
+  border-color: #C27926;
+  color: #FFFFFF;
+  box-shadow: 0 4px 16px rgba(194, 121, 38, 0.35);
+}
+
+.hero-buttons .btn-white-outline {
+  background-color: transparent;
+  border: 1.5px solid rgba(255, 255, 255, 0.7);
+  color: #FFFFFF;
+  backdrop-filter: blur(4px);
+}
+
+.hero-buttons .btn-white-outline:hover {
+  background-color: rgba(255, 255, 255, 0.12);
+  border-color: #FFFFFF;
+  color: #FFFFFF;
 }
 
 /* --------------------------------------------------------------------------
@@ -1952,14 +2019,39 @@
   padding-bottom: 4.5rem;
   display: flex;
   align-items: center;
-  background-color: #69785A;
-  background: #69785A;
   color: #FFFFFF;
   overflow: hidden;
+  background-color: #0F2005;
+  background-image: 
+    linear-gradient(180deg, rgba(8, 18, 4, 0.45) 0%, rgba(8, 18, 4, 0.05) 15%, transparent 35%),
+    radial-gradient(ellipse 65% 58% at 21% 36%, 
+      rgba(155, 207, 44, 0.98) 0%, 
+      rgba(130, 184, 32, 0.92) 20%, 
+      rgba(98, 150, 22, 0.80) 42%, 
+      rgba(60, 102, 14, 0.50) 68%, 
+      transparent 100%
+    ),
+    radial-gradient(ellipse 120% 95% at 30% 45%, 
+      #568A14 0%, 
+      #3E6C10 25%, 
+      #254909 50%, 
+      #173007 75%, 
+      #0E1C04 100%
+    );
+  background-size: cover;
+  background-position: center;
 }
 
 .page-hero-banner::before {
-  display: none;
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  pointer-events: none;
+  z-index: 1;
+  background: radial-gradient(ellipse 95% 75% at 45% 42%, transparent 35%, rgba(10, 22, 5, 0.25) 75%, rgba(6, 15, 3, 0.40) 100%);
 }
 
 .page-hero-bg {
