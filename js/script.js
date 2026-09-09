@@ -75,7 +75,7 @@ function initActiveNavLink() {
   navLinks.forEach((link) => {
     const href = link.getAttribute('href');
     if (href === currentPath || (currentPath === '' && href === 'index.html')) {
-      link.classList.add('text-[#0B6E4F]', 'font-semibold');
+      link.classList.add('text-[#69785A]', 'font-semibold');
       link.classList.remove('text-gray-600');
     }
   });
