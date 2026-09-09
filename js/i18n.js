@@ -701,7 +701,47 @@
     '(Hotline 24 Jam)': '(24h Hotline)',
     '(Fast Response)': '(Fast Response)',
     'Diamond Clean Video Showcase': 'Diamond Clean Video Showcase',
-    'Browser Anda tidak mendukung tag video HTML5.': 'Your browser does not support the HTML5 video tag.'
+    'Browser Anda tidak mendukung tag video HTML5.': 'Your browser does not support the HTML5 video tag.',
+
+    // Sustainability & Certifications Page (Kemenkes & Halal)
+    'INTEGRITAS & KEPATUHAN REGULASI RESMI': 'INTEGRITY & OFFICIAL REGULATORY COMPLIANCE',
+    'Standar Mutu, Izin Edar Kemenkes RI & Sertifikasi Halal': 'Quality Standards, Ministry of Health License & Halal Certification',
+    'LEGALITAS RESMI PEMERINTAH REPUBLIK INDONESIA': 'OFFICIAL LICENSING - REPUBLIC OF INDONESIA',
+    'Izin Edar Resmi Kemenkes RI (PKRT)': 'Official Ministry of Health Distribution Permit (PKRT)',
+    'Instansi Penerbit': 'Issuing Authority',
+    'Kemenkes RI & BKPM': 'Ministry of Health RI & BKPM',
+    'Nomor PB UMKU': 'PB UMKU Permit No.',
+    'Nomor Izin Edar PKD': 'PKD Distribution Permit No.',
+    'Masa Berlaku Izin': 'Permit Validity Period',
+    'Aktif s/d 28 Mei 2031': 'Active until May 28, 2031',
+    'DOKUMEN INDUK PB UMKU': 'MASTER PB UMKU PERMIT DOCUMENT',
+    'Surat Izin Edar PKRT Dalam Negeri': 'Domestic PKRT Distribution Permit Letter',
+    'Kementerian Kesehatan RI & Kementerian Investasi / BKPM': 'Ministry of Health RI & Ministry of Investment / BKPM',
+    'OSS TERVERIFIKASI': 'OSS VERIFIED',
+    'Perbesar Dokumen': 'Enlarge Document',
+    'Unduh PDF Lengkap': 'Download Full PDF',
+    'Nomor Induk Berusaha (NIB):': 'Business Identification Number (NIB):',
+    'Nama Pelaku Usaha:': 'Business Entity Name:',
+    'Klasifikasi Baku (KBLI):': 'Standard Industrial Classification (KBLI):',
+    '20231 (Industri Sabun & Pembersih Rumah Tangga)': '20231 (Soap & Household Cleaner Industry)',
+    'Keabsahan Tanda Tangan:': 'Signature Validity:',
+    'Tersertifikasi Elektronik BSrE - BSSN': 'BSrE - BSSN Electronically Certified',
+    'LAMPIRAN DATA TEKNIS RESMI': 'OFFICIAL TECHNICAL DATA ATTACHMENT',
+    'Lampiran Izin Edar Produk (PKD)': 'Product Distribution Permit Attachment (PKD)',
+    'Kementerian Kesehatan RI — Direktorat Jenderal Kefarmasian & Alkes': 'Ministry of Health RI — Directorate General of Pharmacy & Medical Devices',
+    'Nomor Izin Edar Resmi:': 'Official Distribution Permit Number:',
+    'Nama Dagang / Merek:': 'Trade Name / Brand:',
+    'DIAMOND CLEAN Sabun Cuci Piring': 'DIAMOND CLEAN Dishwashing Liquid',
+    'Varian & Sediaan:': 'Variant & Formulation:',
+    'Extra Jeruk Nipis / Cair Hijau': 'Extra Lime / Green Liquid',
+    'Kemasan Resmi:': 'Official Packaging Standard:',
+    'Jerigen, Isi 5 Liter': '5-Liter Commercial Jerrycan',
+    'Masa Berlaku Izin:': 'Permit Validity Period:',
+    'Hingga 28 Mei 2031 (5 Tahun Penuh)': 'Until May 28, 2031 (Full 5 Years)',
+    'Kepatuhan Standar Perbekalan Kesehatan Rumah Tangga (PKRT)': 'Household Health Supply (PKRT) Standard Compliance',
+    'Minta Salinan Legalitas Audit': 'Request Audit Compliance Copies',
+    'Halal Indonesia Terverifikasi': 'Halal Indonesia Certified',
+    'Izin Edar Kemenkes RI PKD 20301620266': 'Ministry of Health License PKD 20301620266'
   };
 
   // WhatsApp Message Translations for Slide Dynamic Buttons
@@ -731,8 +771,8 @@
       en: 'Industry Sectors & B2B Partnerships | Diamond Clean Indonesia'
     },
     sustainability: {
-      id: 'Standar Mutu & Sertifikasi Halal | Diamond Clean Indonesia',
-      en: 'Quality Standards & Halal Certification | Diamond Clean Indonesia'
+      id: 'Sertifikasi Halal & Izin Edar Kemenkes RI | Standar Mutu Diamond Clean',
+      en: 'Halal Certification & Ministry of Health Permit | Diamond Clean Standards'
     },
     contact: {
       id: 'Kontak & Permintaan Penawaran | Diamond Clean Indonesia',

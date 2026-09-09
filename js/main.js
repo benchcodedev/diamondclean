@@ -700,6 +700,24 @@ function initProductLightbox() {
       }
     });
   });
+
+  // Support for Certificate Document Lightbox
+  document.querySelectorAll('.cert-lightbox-trigger').forEach(trigger => {
+    trigger.addEventListener('click', (e) => {
+      e.preventDefault();
+      const card = trigger.closest('.cert-doc-card') || trigger;
+      const img = card.querySelector('.cert-doc-img') || trigger.querySelector('img');
+      const docTitle = trigger.getAttribute('data-doc-title') || (card ? card.getAttribute('data-doc-title') : null);
+      if (img && modalImg) {
+        modalImg.src = img.src;
+        modalImg.alt = img.alt || 'Dokumen Sertifikasi Resmi';
+        if (modalTitle) {
+          modalTitle.textContent = docTitle || img.alt || 'Dokumen Sertifikasi Resmi';
+        }
+        modal.classList.add('active');
+      }
+    });
+  });
 }
 
 /* --------------------------------------------------------------------------

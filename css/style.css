@@ -12,11 +12,15 @@
   --color-primary-light: #10B981;   /* Vibrant Emerald Green */
   --color-secondary: #08553D;       /* Rich Deep Pine Green */
   --color-secondary-dark: #043627;  /* Dark Forest Slate */
-  --color-accent: #7AC143;          /* Vibrant Fresh Lime Green */
-  --color-accent-hover: #68A538;    /* Darker Fresh Lime */
+  --color-accent: #C27926;          /* Warm Amber Caramel (Replaced harsh neon lime) */
+  --color-accent-hover: #A8651B;    /* Darker Warm Amber */
   --color-light-mint: #EAF7F0;      /* Fresh Mint Light */
   --color-mint-border: #BBF7D0;     /* Soft Mint Border */
-  --color-halal-green: #047857;     /* Halal Badge Emerald */
+  /* Sage Green Color Palette */
+  --color-sage: #BFDAA4;            /* User-selected Sage Green HEX BFDAA4 */
+  --color-sage-dark: #A4C189;       /* Deeper Sage for gradient depth */
+  --color-sage-light: #D2ECC0;      /* Lighter Sage */
+  --color-sage-rgb: 191, 218, 164;
   
   --color-bg: #FFFFFF;              /* Pure Crisp White */
   --color-bg-light: #F8FAF9;        /* Soft Clean Off-White */
@@ -30,7 +34,7 @@
   /* RGB values for translucent green overlays & glassmorphism */
   --color-primary-rgb: 11, 110, 79;
   --color-secondary-rgb: 8, 85, 61;
-  --color-accent-rgb: 122, 193, 67;
+  --color-accent-rgb: 194, 121, 38;
   --color-dark-text-rgb: 17, 24, 39;
   
   /* Typography */
@@ -41,7 +45,7 @@
   --shadow-sm: 0 2px 8px rgba(11, 110, 79, 0.05);
   --shadow-md: 0 8px 24px rgba(11, 110, 79, 0.08);
   --shadow-lg: 0 16px 48px rgba(11, 110, 79, 0.12);
-  --shadow-glow: 0 0 25px rgba(122, 193, 67, 0.35);
+  --shadow-glow: 0 0 25px rgba(194, 121, 38, 0.35);
   --shadow-glass: 0 8px 32px 0 rgba(8, 85, 61, 0.15);
   
   /* Radii */
