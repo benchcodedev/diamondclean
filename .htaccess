@@ -1,0 +1,26 @@
+# ==============================================================================
+# DIAMOND CLEAN - Apache / cPanel / Rumahweb Configuration (.htaccess)
+# ==============================================================================
+
+# Matikan MultiViews agar RewriteRule bekerja akurat
+Options -MultiViews
+
+<IfModule mod_rewrite.c>
+  RewriteEngine On
+  RewriteBase /
+
+  # 1. Redirect /product ke /solutions (Katalog Produk)
+  RewriteRule ^product/?$ /solutions [R=301,L]
+
+  # 2. Redirect jika pengunjung mengakses file .html langsung ke Clean URL tanpa .html
+  RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
+  RewriteRule ^ /%1 [R=301,L]
+
+  # 3. Internal Rewrite: Arahkan URL tanpa .html (misal: /about) ke file fisiknya (about.html)
+  RewriteCond %{REQUEST_FILENAME} !-d
+  RewriteCond %{REQUEST_FILENAME}.html -f
+  RewriteRule ^(.*)$ $1.html [L]
+</IfModule>
+
+# Handle 404 agar tidak menampilkan halaman error default Apache
+ErrorDocument 404 /index.html
