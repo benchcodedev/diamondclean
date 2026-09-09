@@ -296,6 +296,15 @@
   flex-direction: column;
 }
 
+.product-variant-selector {
+  margin-bottom: 0.65rem;
+  min-height: 30px;
+  display: flex;
+  align-items: center;
+  flex-wrap: nowrap;
+  gap: 0.35rem;
+}
+
 .product-card-main {
   display: flex;
   flex-direction: column;
@@ -309,42 +318,39 @@
 }
 
 .product-card-main h3 {
-  font-size: 1.12rem;
+  font-size: 1.05rem;
   font-weight: 700;
   color: var(--color-dark-text);
   margin-bottom: 0.45rem;
   line-height: 1.35;
-  min-height: 48px;
-  height: auto;
-  display: block;
-  overflow: visible;
+  height: 52px;
+  min-height: 52px;
+  display: flex;
+  align-items: flex-start;
   transition: color 0.2s ease;
 }
 
 .product-card-main p {
-  font-size: 0.825rem;
+  font-size: 0.815rem;
   color: var(--color-body-text);
-  line-height: 1.5;
-  margin-bottom: 0.9rem;
-  min-height: 56px;
-  height: auto;
+  line-height: 1.48;
+  margin-bottom: 0.85rem;
+  height: 82px;
+  min-height: 82px;
   display: block;
-  overflow: visible;
-  text-overflow: unset;
 }
 
 .product-specs {
   display: flex;
   flex-direction: column;
-  justify-content: flex-start;
-  gap: 0.35rem;
-  min-height: 104px;
-  height: auto;
+  justify-content: space-between;
+  height: 112px;
+  min-height: 112px;
   margin-top: auto;
   margin-bottom: 1.15rem;
-  padding: 0.75rem 0.95rem;
+  padding: 0.65rem 0.85rem;
   background: var(--color-bg-light);
-  border: 1px solid rgba(105, 120, 90, 0.08);
+  border: 1px solid rgba(105, 120, 90, 0.12);
   border-radius: var(--radius-md);
   cursor: pointer;
   transition: border-color 0.2s ease, box-shadow 0.2s ease;
@@ -358,12 +364,12 @@
 .product-spec-row {
   display: flex;
   justify-content: space-between;
-  align-items: flex-start;
-  gap: 0.5rem;
-  font-size: 0.8rem;
-  line-height: 1.35;
-  padding: 0.22rem 0;
-  border-bottom: 1px dashed rgba(105, 120, 90, 0.1);
+  align-items: center;
+  gap: 0.45rem;
+  font-size: 0.77rem;
+  line-height: 1.25;
+  padding: 0.2rem 0;
+  border-bottom: 1px dashed rgba(105, 120, 90, 0.12);
 }
 
 .product-spec-row:last-child {
@@ -380,6 +386,7 @@
   font-weight: 500;
   white-space: nowrap;
   flex-shrink: 0;
+  font-size: 0.76rem;
 }
 
 .product-spec-row span:last-child {
@@ -388,8 +395,8 @@
   text-align: right;
   white-space: normal;
   word-break: break-word;
-  overflow: visible;
-  text-overflow: unset;
+  font-size: 0.76rem;
+  line-height: 1.25;
   flex: 1;
 }
 
