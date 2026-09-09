@@ -163,6 +163,7 @@
   font-size: 1.025rem;
   line-height: 1.7;
   margin-bottom: 2rem;
+  text-align: justify;
 }
 
 .advantage-cta-wrap {
@@ -237,6 +238,7 @@
   color: var(--color-body-text);
   line-height: 1.55;
   margin: 0;
+  text-align: justify;
 }
 
 /* --------------------------------------------------------------------------
@@ -298,7 +300,8 @@
 
 .product-variant-selector {
   margin-bottom: 0.65rem;
-  min-height: 30px;
+  height: 32px;
+  min-height: 32px;
   display: flex;
   align-items: center;
   flex-wrap: nowrap;
@@ -323,8 +326,8 @@
   color: var(--color-dark-text);
   margin-bottom: 0.45rem;
   line-height: 1.35;
-  height: 52px;
   min-height: 52px;
+  height: auto;
   display: flex;
   align-items: flex-start;
   transition: color 0.2s ease;
@@ -335,8 +338,8 @@
   color: var(--color-body-text);
   line-height: 1.48;
   margin-bottom: 0.85rem;
-  height: 82px;
-  min-height: 82px;
+  min-height: 98px;
+  height: auto;
   display: block;
 }
 
@@ -344,11 +347,11 @@
   display: flex;
   flex-direction: column;
   justify-content: space-between;
-  height: 112px;
-  min-height: 112px;
+  height: 144px;
+  min-height: 144px;
   margin-top: auto;
-  margin-bottom: 1.15rem;
-  padding: 0.65rem 0.85rem;
+  margin-bottom: 1rem;
+  padding: 0.75rem 0.85rem;
   background: var(--color-bg-light);
   border: 1px solid rgba(105, 120, 90, 0.12);
   border-radius: var(--radius-md);
@@ -368,7 +371,7 @@
   gap: 0.45rem;
   font-size: 0.77rem;
   line-height: 1.25;
-  padding: 0.2rem 0;
+  padding: 0.25rem 0;
   border-bottom: 1px dashed rgba(105, 120, 90, 0.12);
 }
 
@@ -401,7 +404,7 @@
 }
 
 .product-card-body .btn {
-  margin-top: auto;
+  margin-top: 0;
   width: 100%;
   display: inline-flex;
   align-items: center;
@@ -1091,6 +1094,7 @@
   font-size: 0.925rem;
   color: var(--color-muted-text);
   margin-bottom: 1.5rem;
+  text-align: justify;
 }
 
 .industry-products-tags {
@@ -1143,6 +1147,16 @@
 
 .halal-section-card p {
   color: rgba(255, 255, 255, 0.92);
+}
+
+.halal-section-card .halal-desc-text,
+.halal-section-card .halal-feature-text,
+.halal-section-card .halal-content-col > p,
+.halal-section-card .sub-grid-2col p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  line-height: 1.65;
 }
 
 .halal-cta-wrap {
@@ -1616,6 +1630,14 @@
   width: 100%;
 }
 
+.story-desc-text,
+.story-grid .reveal-left > p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  line-height: 1.7;
+}
+
 /* Story Stats Grid (about.html) */
 .story-stats-grid {
   display: grid;
@@ -1659,6 +1681,23 @@
   grid-template-columns: 1fr 1fr;
   gap: 2.5rem;
   width: 100%;
+}
+
+.vision-desc,
+.vision-mission-grid p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+}
+
+.mission-desc,
+.vision-mission-grid li > span:last-child {
+  display: block;
+  flex: 1;
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  line-height: 1.6;
 }
 
 .form-row-2col {
@@ -1718,6 +1757,14 @@
   flex-direction: column;
   height: 100%;
   box-sizing: border-box;
+}
+
+.contact-info-card > p,
+.contact-section-grid .card > p {
+  text-align: justify;
+  text-justify: inter-word;
+  text-align-last: left;
+  line-height: 1.7;
 }
 
 .contact-section-grid #b2b-quote-form {
