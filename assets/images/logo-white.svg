@@ -1,12 +1,28 @@
-<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 320 64" fill="none" width="320" height="64">
   <defs>
+    <style>
+      @import url('https://fonts.googleapis.com/css2?family=Inter:wght@700&amp;family=Poppins:wght@800&amp;display=swap');
+      .brand-title-white {
+        font-family: 'Poppins', 'Plus Jakarta Sans', system-ui, -apple-system, sans-serif;
+        font-size: 24px;
+        font-weight: 800;
+        letter-spacing: -0.5px;
+      }
+      .brand-tagline-white {
+        font-family: 'Inter', system-ui, -apple-system, sans-serif;
+        font-size: 9.5px;
+        font-weight: 700;
+        letter-spacing: 3.1px;
+      }
+    </style>
     <linearGradient id="whiteDiamondGreenGrad" x1="0%" y1="0%" x2="100%" y2="100%">
       <stop offset="0%" stop-color="#FFFFFF"/>
       <stop offset="50%" stop-color="#BBF7D0"/>
       <stop offset="100%" stop-color="#86EFAC"/>
     </linearGradient>
   </defs>
-  <!-- Diamond Icon Group -->
+
+  <!-- Diamond Icon Group (White & Mint Light 3D Facets) -->
   <g transform="translate(4, 6)">
     <polygon points="26,2 48,18 26,50 4,18" fill="url(#whiteDiamondGreenGrad)" filter="drop-shadow(0 4px 8px rgba(0,0,0,0.3))"/>
     <polygon points="26,2 48,18 36,18 26,2" fill="#FFFFFF" opacity="0.9"/>
@@ -20,8 +36,9 @@
     <circle cx="10" cy="12" r="1.5" fill="#FFFFFF"/>
     <circle cx="44" cy="40" r="1.2" fill="#BBF7D0"/>
   </g>
-  <!-- Brand Text -->
-  <text x="68" y="34" font-family="'Poppins', 'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="800" fill="#FFFFFF" letter-spacing="-0.5">DIAMOND</text>
-  <text x="194" y="34" font-family="'Poppins', 'Plus Jakarta Sans', sans-serif" font-size="24" font-weight="800" fill="#86EFAC" letter-spacing="-0.5">CLEAN</text>
-  <text x="70" y="48" font-family="'Inter', sans-serif" font-size="9.5" font-weight="700" fill="#DCFCE7" letter-spacing="3.1">SOLUSI KEBERSIHAN HOREKA 5L</text>
+
+  <!-- Brand Typography -->
+  <text x="68" y="34" class="brand-title-white" fill="#FFFFFF">DIAMOND</text>
+  <text x="194" y="34" class="brand-title-white" fill="#86EFAC">CLEAN</text>
+  <text x="70" y="48" class="brand-tagline-white" fill="#DCFCE7">SOLUSI KEBERSIHAN HOREKA 5L</text>
 </svg>
