@@ -9,14 +9,17 @@ Options -MultiViews
   RewriteEngine On
   RewriteBase /
 
-  # 1. Redirect /product ke /solutions (Katalog Produk)
-  RewriteRule ^product/?$ /solutions [R=301,L]
+  # 1. Redirect URL lama / alias ke URL baru
+  RewriteRule ^product-?catalogue/?$ /product-catalogue [L]
+  RewriteRule ^solutions/?$ /product-catalogue [R=301,L]
+  RewriteRule ^product/?$ /product-catalogue [R=301,L]
+  RewriteRule ^sustainability/?$ /certification [R=301,L]
 
   # 2. Redirect jika pengunjung mengakses file .html langsung ke Clean URL tanpa .html
   RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
 
-  # 3. Internal Rewrite: Arahkan URL tanpa .html (misal: /about) ke file fisiknya (about.html)
+  # 3. Internal Rewrite: Arahkan Clean URL (misal: /about, /product-catalogue) ke file fisiknya (.html)
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]

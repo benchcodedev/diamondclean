@@ -39,10 +39,12 @@
         const routes = {
           '/': '/index.html',
           '/about': '/about.html',
-          '/solutions': '/solutions.html',
-          '/product': '/solutions.html',
+          '/product-catalogue': '/product-catalogue.html',
+          '/solutions': '/product-catalogue.html',
+          '/product': '/product-catalogue.html',
           '/industries': '/industries.html',
-          '/sustainability': '/sustainability.html',
+          '/certification': '/certification.html',
+          '/sustainability': '/certification.html',
           '/contact': '/contact.html'
         };
 

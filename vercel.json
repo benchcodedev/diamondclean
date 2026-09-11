@@ -2,6 +2,8 @@
   "cleanUrls": true,
   "trailingSlash": false,
   "rewrites": [
-    { "source": "/product", "destination": "/solutions" }
+    { "source": "/solutions", "destination": "/product-catalogue" },
+    { "source": "/product", "destination": "/product-catalogue" },
+    { "source": "/sustainability", "destination": "/certification" }
   ]
 }

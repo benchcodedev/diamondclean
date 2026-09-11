@@ -35,9 +35,12 @@ const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost:8080'}`);
   let reqPath = decodeURIComponent(parsedUrl.pathname);
 
-  // Rewrites per vercel.json
-  if (reqPath === '/product') {
-    reqPath = '/solutions';
+  // Rewrites & aliases
+  if (reqPath === '/solutions' || reqPath === '/product') {
+    reqPath = '/product-catalogue';
+  }
+  if (reqPath === '/sustainability') {
+    reqPath = '/certification';
   }
 
   // Determine local file path

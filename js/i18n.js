@@ -763,16 +763,16 @@
       en: 'About Us | Diamond Clean - 5L Industrial Cleaning Chemical & Soap Solutions'
     },
     solutions: {
-      id: 'Katalog Produk Sabun 5L & Chemical | Diamond Clean Indonesia',
-      en: '5L Soap & Chemical Product Catalogue | Diamond Clean Indonesia'
+      id: 'Product Catalogue | Diamond Clean',
+      en: 'Product Catalogue | Diamond Clean'
     },
     industries: {
       id: 'Sektor Industri & Kemitraan B2B | Diamond Clean Indonesia',
       en: 'Industry Sectors & B2B Partnerships | Diamond Clean Indonesia'
     },
     sustainability: {
-      id: 'Sertifikasi Halal & Izin Edar Kemenkes RI | Standar Mutu Diamond Clean',
-      en: 'Halal Certification & Ministry of Health Permit | Diamond Clean Standards'
+      id: 'Certification | Diamond Clean',
+      en: 'Certification | Diamond Clean'
     },
     contact: {
       id: 'Kontak & Permintaan Penawaran | Diamond Clean Indonesia',
@@ -786,9 +786,9 @@
   function getCurrentPageKey() {
     const p = (typeof window !== 'undefined' && window.location && window.location.pathname) ? window.location.pathname.toLowerCase() : '';
     if (p.includes('about')) return 'about';
-    if (p.includes('solutions') || p.includes('product')) return 'solutions';
+    if (p.includes('solutions') || p.includes('product') || p.includes('catalogue')) return 'solutions';
     if (p.includes('industries')) return 'industries';
-    if (p.includes('sustainability')) return 'sustainability';
+    if (p.includes('sustainability') || p.includes('certification')) return 'sustainability';
     if (p.includes('contact')) return 'contact';
     return 'index';
   }
