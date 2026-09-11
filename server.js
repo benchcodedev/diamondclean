@@ -35,12 +35,18 @@ const server = http.createServer((req, res) => {
   const parsedUrl = new URL(req.url, `http://${req.headers.host || 'localhost:8080'}`);
   let reqPath = decodeURIComponent(parsedUrl.pathname);
 
-  // Rewrites & aliases
-  if (reqPath === '/solutions' || reqPath === '/product') {
+  // Rewrites & aliases (case-insensitive)
+  const lowerPath = reqPath.toLowerCase();
+  if (lowerPath === '/solutions' || lowerPath === '/product' || lowerPath === '/productcatalogue') {
     reqPath = '/product-catalogue';
-  }
-  if (reqPath === '/sustainability') {
+  } else if (lowerPath === '/sustainability' || lowerPath === '/certifications' || lowerPath === '/certification') {
     reqPath = '/certification';
+  } else if (lowerPath === '/about') {
+    reqPath = '/about';
+  } else if (lowerPath === '/industries') {
+    reqPath = '/industries';
+  } else if (lowerPath === '/contact') {
+    reqPath = '/contact';
   }
 
   // Determine local file path

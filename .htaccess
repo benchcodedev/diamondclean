@@ -9,17 +9,28 @@ Options -MultiViews
   RewriteEngine On
   RewriteBase /
 
-  # 1. Redirect URL lama / alias ke URL baru
-  RewriteRule ^product-?catalogue/?$ /product-catalogue [L]
-  RewriteRule ^solutions/?$ /product-catalogue [R=301,L]
-  RewriteRule ^product/?$ /product-catalogue [R=301,L]
-  RewriteRule ^sustainability/?$ /certification [R=301,L]
+  # 1. Redirect URL lama / alias / variasi ke Clean URL resmi (301 Permanent)
+  RewriteRule ^productcatalogue/?$ /product-catalogue [R=301,L,NC]
+  RewriteRule ^solutions/?$ /product-catalogue [R=301,L,NC]
+  RewriteRule ^product/?$ /product-catalogue [R=301,L,NC]
+  RewriteRule ^katalog/?$ /product-catalogue [R=301,L,NC]
+  RewriteRule ^katalog-produk/?$ /product-catalogue [R=301,L,NC]
+  RewriteRule ^sustainability/?$ /certification [R=301,L,NC]
+  RewriteRule ^certifications/?$ /certification [R=301,L,NC]
+  RewriteRule ^sertifikasi/?$ /certification [R=301,L,NC]
 
   # 2. Redirect jika pengunjung mengakses file .html langsung ke Clean URL tanpa .html
   RewriteCond %{THE_REQUEST} \s/+(.+?)\.html[\s?] [NC]
   RewriteRule ^ /%1 [R=301,L]
 
-  # 3. Internal Rewrite: Arahkan Clean URL (misal: /about, /product-catalogue) ke file fisiknya (.html)
+  # 3. Clean URL Routing ke File HTML Fisik (Case-Insensitive [NC])
+  RewriteRule ^about/?$ about.html [NC,L]
+  RewriteRule ^product-catalogue/?$ product-catalogue.html [NC,L]
+  RewriteRule ^industries/?$ industries.html [NC,L]
+  RewriteRule ^certification/?$ certification.html [NC,L]
+  RewriteRule ^contact/?$ contact.html [NC,L]
+
+  # 4. Fallback Generic: Arahkan URL lain ke file .html jika file ada
   RewriteCond %{REQUEST_FILENAME} !-d
   RewriteCond %{REQUEST_FILENAME}.html -f
   RewriteRule ^(.*)$ $1.html [L]
